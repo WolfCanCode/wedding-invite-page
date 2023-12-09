@@ -17,8 +17,8 @@ const Stories: React.FC = () => {
     <section className="flex flex-col text-center py-10 w-screen">
       {/* Story 1 */}
       <div className='flex flex-col md:flex-row'>
-        <div className='hidden md:flex flex-1  flex-col justify-center text-3xl bg-white/80'>
-          <div className='px-20'>
+        <div className='hidden lg:flex flex-1  flex-col justify-center text-3xl bg-white/80'>
+          <div className='px-20 py-4'>
             <div className='flex justify-center min-h-[50px]'>
               <Lottie
                 animationData={animation1Data}
@@ -34,7 +34,7 @@ const Stories: React.FC = () => {
         <div className='flex-1 relative min-h-[400px] md:min-h-[800px]'>
           <Image alt='first-met' objectFit='cover' fill src="/story-1.jpg" />
         </div>
-        <div className='flex md:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-white/80'>
+        <div className='flex lg:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-white/80'>
           <div className='px-10'>
             <div className='flex justify-center min-h-[100px]'>
               <Lottie
@@ -55,8 +55,8 @@ const Stories: React.FC = () => {
         <div className='flex-1 relative min-h-[400px] md:min-h-[800px]'>
           <Image alt='start-talking' objectFit='cover' objectPosition='50% 100%' fill src="/story-2.jpg" />
         </div>
-        <div className='hidden md:flex flex-1  flex-col justify-center text-3xl bg-[#726a5e] '>
-          <div className='px-20'>
+        <div className='hidden lg:flex flex-1  flex-col justify-center text-3xl bg-[#431407] '>
+          <div className='px-20  py-4'>
             <div className='flex justify-center min-h-[50px]'>
               <Lottie
                 animationData={animation2Data}
@@ -71,7 +71,7 @@ const Stories: React.FC = () => {
             </span>
           </div>
         </div>
-        <div className='flex md:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-[#726a5e] '>
+        <div className='flex lg:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-[#431407] '>
           <div className='px-10'>
             <div className='flex justify-center min-h-[100px]'>
               <Lottie
@@ -90,8 +90,8 @@ const Stories: React.FC = () => {
 
       {/* Story 3 */}
       <div className='flex flex-col md:flex-row'>
-        <div className='hidden md:flex flex-1  flex-col justify-center text-3xl bg-white/80'>
-          <div className='px-20'>
+        <div className='hidden lg:flex flex-1  flex-col justify-center text-3xl bg-white/80'>
+          <div className='px-20 py-4'>
             <div className='flex justify-center min-h-[150px]'>
               <Lottie
                 animationData={animation3Data}
@@ -111,7 +111,7 @@ const Stories: React.FC = () => {
         <div className='flex-1 relative min-h-[400px] md:min-h-[800px]'>
           <Image alt='lost-in-forest' objectFit='cover' objectPosition='50% 70%' fill src="/story-3.jpg" />
         </div>
-        <div className='flex md:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-white/80'>
+        <div className='flex lg:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-white/80'>
           <div className='px-10'>
             <div className='flex justify-center min-h-[150px]'>
               <Lottie
@@ -136,8 +136,8 @@ const Stories: React.FC = () => {
         <div className='flex-1 relative min-h-[400px] md:min-h-[800px]'>
           <Image alt='start-talking' objectFit='cover' fill src="/story-4.jpg" />
         </div>
-        <div className='hidden md:flex flex-1  flex-col justify-center text-3xl bg-[#726a5e] '>
-          <div className='px-20'>
+        <div className='hidden lg:flex flex-1  flex-col justify-center text-3xl bg-[#431407] '>
+          <div className='px-20 py-4'>
             <div className='flex justify-center min-h-[150px]'>
               <Lottie
                 animationData={animation4Data}
@@ -152,7 +152,7 @@ const Stories: React.FC = () => {
             </span>
           </div>
         </div>
-        <div className='flex md:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-[#726a5e] '>
+        <div className='flex lg:hidden flex-1  flex-col justify-center text-xl pt-5 pb-10 bg-[#431407] '>
           <div className='px-10'>
             <div className='flex justify-center min-h-[150px]'>
               <Lottie

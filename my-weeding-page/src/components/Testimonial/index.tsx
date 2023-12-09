@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Hachi_Maru_Pop, Habibi } from 'next/font/google';
 import Lottie from 'lottie-react';
 const font1 = Hachi_Maru_Pop({ weight: "400", subsets: ['latin'] });
