@@ -5,6 +5,8 @@ import localFont from 'next/font/local';
 import Image from 'next/image';
 import React from 'react';
 import banner from './banner.jpg';
+import Lottie from 'lottie-react';
+import animation1Data from './divider.json';
 
 const blackerSans = localFont({ src: './fonts/blacker-sans.otf' });
 const serifDisplay = DM_Serif_Display({ weight: '400', subsets: ['latin'] });
@@ -24,12 +26,26 @@ const Hero: React.FC = () => {
           <div>&</div>
           <div>KHÁNH NGỌC</div>
         </div>
-        <div className={[serifDisplay.className, 'pt-10 text-3xl'].join(' ')}>
+        <div className='flex min-h-[100px] justify-center'>
+          <Lottie
+            animationData={animation1Data}
+            className='flex max-h-[100px]  items-center justify-center'
+            loop={false}
+          />
+        </div>
+        <div className={[serifDisplay.className, 'text-3xl'].join(' ')}>
           Save our day
         </div>
         <div className={[serifDisplay.className, 'text-3xl'].join(' ')}>
           16 . 12 . 2023
         </div>
+      </div>
+      <div className='flex min-h-[100px] justify-center'>
+        <Lottie
+          animationData={animation1Data}
+          className='flex max-h-[100px]  items-center justify-center'
+          loop={false}
+        />
       </div>
       <div className='pt-12'>
         <div className='hidden md:block'>

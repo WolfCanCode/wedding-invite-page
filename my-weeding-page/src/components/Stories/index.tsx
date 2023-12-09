@@ -14,19 +14,25 @@ import animation1Data from './story-1.json';
 import animation2Data from './story-2.json';
 import animation3Data from './story-3.json';
 import animation4Data from './story-4.json';
+import { useIntersection, useMeasure, useScroll } from 'react-use';
 const font = Habibi({ weight: '400', subsets: ['latin'] });
 
 const Stories: React.FC = () => {
+  const story1Ref = React.useRef(null);
+  const story2Ref = React.useRef(null);
+  const story3Ref = React.useRef(null);
+  const story4Ref = React.useRef(null);
+
   return (
     <section className='flex w-screen flex-col py-10 text-center'>
       {/* Story 1 */}
       <div className='flex flex-col md:flex-row'>
         <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl lg:flex'>
           <div className='px-20 py-4'>
-            <div className='flex min-h-[50px] justify-center'>
+            <div className='flex min-h-[120px] justify-center'>
               <Lottie
                 animationData={animation1Data}
-                className='flex max-h-[150px] items-center justify-center'
+                className='flex max-h-[100px] items-center justify-center'
                 loop={true}
               />
             </div>
@@ -54,7 +60,7 @@ const Stories: React.FC = () => {
             <div className='flex min-h-[100px] justify-center'>
               <Lottie
                 animationData={animation1Data}
-                className='flex max-h-[150px] items-center justify-center'
+                className='flex max-h-[120px] items-center justify-center'
                 loop={true}
               />
             </div>
@@ -70,7 +76,7 @@ const Stories: React.FC = () => {
       </div>
 
       {/* Story 2 */}
-      <div className='flex flex-col md:flex-row'>
+      <div className='flex flex-col md:flex-row' ref={story2Ref}>
         <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
           <Image
             alt='start-talking'
@@ -86,7 +92,7 @@ const Stories: React.FC = () => {
             <div className='flex min-h-[50px] justify-center'>
               <Lottie
                 animationData={animation2Data}
-                className='flex max-h-[150px] items-center justify-center'
+                className='flex max-h-[120px] items-center justify-center'
                 loop={true}
               />
             </div>
@@ -134,10 +140,10 @@ const Stories: React.FC = () => {
       </div>
 
       {/* Story 3 */}
-      <div className='flex flex-col md:flex-row'>
+      <div className='flex flex-col md:flex-row' ref={story3Ref}>
         <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl lg:flex'>
           <div className='px-20 py-4'>
-            <div className='flex min-h-[150px] justify-center'>
+            <div className='flex min-h-[120px] justify-center'>
               <Lottie
                 animationData={animation3Data}
                 className='flex max-h-[100px] items-center justify-center'
@@ -177,7 +183,7 @@ const Stories: React.FC = () => {
         </div>
         <div className='flex flex-1 flex-col  justify-center bg-white/80 pb-10 pt-5 text-xl lg:hidden'>
           <div className='px-10'>
-            <div className='flex min-h-[150px] justify-center'>
+            <div className='flex min-h-[120px] justify-center'>
               <Lottie
                 animationData={animation3Data}
                 className='flex max-h-[100px] items-center justify-center'
@@ -208,7 +214,7 @@ const Stories: React.FC = () => {
       </div>
 
       {/* Story 4 */}
-      <div className='flex flex-col md:flex-row'>
+      <div className='flex flex-col md:flex-row' ref={story4Ref}>
         <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
           <Image
             alt='start-talking'
@@ -221,7 +227,7 @@ const Stories: React.FC = () => {
         </div>
         <div className='hidden flex-1 flex-col  justify-center bg-[#431407] text-2xl lg:flex '>
           <div className='px-20 py-4'>
-            <div className='flex min-h-[150px] justify-center'>
+            <div className='flex min-h-[120px] justify-center'>
               <Lottie
                 animationData={animation4Data}
                 className='flex max-h-[100px] items-center justify-center'
@@ -242,7 +248,7 @@ const Stories: React.FC = () => {
         </div>
         <div className='flex flex-1 flex-col  justify-center bg-[#431407] pb-10 pt-5 text-xl lg:hidden '>
           <div className='px-10'>
-            <div className='flex min-h-[150px] justify-center'>
+            <div className='flex min-h-[120px] justify-center'>
               <Lottie
                 animationData={animation4Data}
                 className='flex max-h-[100px] items-center justify-center'
