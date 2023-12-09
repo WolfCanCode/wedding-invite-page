@@ -1,24 +1,27 @@
 "use client"
 
-import { Gentium_Book_Plus } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 import React, { useEffect } from 'react';
 import Lottie, { LottieRef } from "lottie-react";
 import animation1Data from "./header-1.json";
 
-const font = Gentium_Book_Plus({ weight: "400", subsets: ['vietnamese'] });
+const font = Playfair_Display({ weight: "400", subsets: ['vietnamese'] });
 const Header: React.FC = () => {
   const lotieRef: LottieRef = React.useRef(null);
   useEffect(() => {
     lotieRef.current?.setSpeed(2)
   }, []);
+
+  const underlineEffect = "hover:underline underline-offset-4 decoration-4 decoration-orange-700/25"
   return (
-    <header className="flex flex-row w-full justify-center md:justify-between p-8 md:p-24">
+    <header className={
+      [font.className, "flex flex-row w-full justify-center md:justify-between p-8 md:p-24"].join(" ")}>
       <nav className='hidden md:block pt-10'>
         <ul className="flex flex-row gap-4 text-lg">
-          <li className='hover:underline-offset-1 hover:decoration-pink-500'>
+          <li className={underlineEffect}>
             <a href="#">Lịch trình</a>
           </li>
-          <li>
+          <li className={underlineEffect}>
             <a href="#">Tham dự</a>
           </li>
         </ul>
@@ -38,10 +41,10 @@ const Header: React.FC = () => {
       </div>
       <nav className='hidden md:block pt-10'>
         <ul className="flex flex-row gap-4 text-lg">
-          <li>
+          <li className={underlineEffect}>
             <a href="#">Ảnh cưới</a>
           </li>
-          <li>
+          <li className={underlineEffect}>
             <a href="#">Liên hệ</a>
           </li>
         </ul>

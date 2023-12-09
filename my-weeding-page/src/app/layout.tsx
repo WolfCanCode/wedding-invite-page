@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
-import { Arimo } from 'next/font/google'
 import './globals.css'
 
-const arimo = Arimo({ subsets: ['vietnamese'] })
 
 export const metadata: Metadata = {
   title: 'Hoang Dung & Khanh Ngoc Wedding',
@@ -16,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={arimo.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

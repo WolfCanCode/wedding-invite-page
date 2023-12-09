@@ -1,45 +1,58 @@
-"use client"
+'use client';
 
-import React, { useEffect } from 'react';
-import { Gentium_Book_Plus } from 'next/font/google';
+import { DM_Serif_Display } from 'next/font/google';
+import localFont from 'next/font/local';
 import Image from 'next/image';
-import Lottie, { LottieRef } from 'lottie-react';
-const font = Gentium_Book_Plus({ weight: "400", subsets: ['vietnamese'] });
-import animation1Data from "./and.json";
+import React from 'react';
+import banner from './banner.jpg';
+
+const blackerSans = localFont({ src: './fonts/blacker-sans.otf' });
+const serifDisplay = DM_Serif_Display({ weight: '400', subsets: ['latin'] });
 
 const Hero: React.FC = () => {
-  const lotieRef: LottieRef = React.useRef(null);
-  useEffect(() => {
-    lotieRef.current?.setSpeed(2)
-  }, []);
   return (
-    <section className={[font.className, 'text-center flex flex-col justify-center'].join(" ")}>
+    <section
+      className={[
+        blackerSans.className,
+        'flex flex-col justify-center text-center',
+      ].join(' ')}
+    >
       <div className='flex flex-col'>
-        <div className='hidden md:block text-5xl'>
-          HOÀNG DŨNG & KHÁNH NGỌC
+        <div className='hidden text-5xl md:block'>HOÀNG DŨNG & KHÁNH NGỌC</div>
+        <div className='flex flex-col text-5xl md:hidden'>
+          <div>HOÀNG DŨNG</div>
+          <div>&</div>
+          <div>KHÁNH NGỌC</div>
         </div>
-        <div className='md:hidden text-5xl flex-col flex'>
-          <div>
-            HOÀNG DŨNG
-          </div>
-          <div>
-            &
-          </div>
-          <div>
-            KHÁNH NGỌC
-          </div>
+        <div className={[serifDisplay.className, 'pt-10 text-3xl'].join(' ')}>
+          Save our day
         </div>
-        <div className='text-3xl pt-10'>Save our day</div>
-        <div className='text-3xl'>16 . 12 . 2023</div>
+        <div className={[serifDisplay.className, 'text-3xl'].join(' ')}>
+          16 . 12 . 2023
+        </div>
       </div>
       <div className='pt-12'>
         <div className='hidden md:block'>
-          <div className='relative  ml-[10vw] max-w-[80vw] h-[600px] rounded-xl overflow-hidden'>
-            <Image src="/banner.jpg" fill objectFit='cover' alt="Picture of the author" />
+          <div className='relative  ml-[10vw] h-[600px] max-w-[80vw] overflow-hidden rounded-xl'>
+            <Image
+              placeholder='blur'
+              src={banner}
+              fill
+              sizes='100%'
+              style={{ objectFit: 'cover' }}
+              alt='Picture of the author'
+            />
           </div>
         </div>
-        <div className='relative md:hidden h-[600px]'>
-          <Image src="/banner.jpg" fill objectFit='cover' objectPosition='80% center' alt="Picture of the author" />
+        <div className='relative h-[600px] md:hidden'>
+          <Image
+            placeholder='blur'
+            src={banner}
+            fill
+            sizes='100%'
+            style={{ objectFit: 'cover', objectPosition: '80% center' }}
+            alt='Picture of the author'
+          />
         </div>
       </div>
     </section>
