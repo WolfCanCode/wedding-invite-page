@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 * {
-  color: #431407;
+  color: #7A4732;
+}
+
+body, html{
+  overflow-x: hidden;
 }

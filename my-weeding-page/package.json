@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vercel/speed-insights": "^1.0.1",
+    "add-to-calendar-button-react": "^2.4.3",
     "lottie-react": "^2.4.0",
     "next": "14.0.4",
     "react": "^18",

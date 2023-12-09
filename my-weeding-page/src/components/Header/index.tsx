@@ -1,24 +1,40 @@
 'use client';
 
+import Lottie, { LottieRef } from 'lottie-react';
 import { Playfair_Display } from 'next/font/google';
 import React, { useEffect } from 'react';
-import Lottie, { LottieRef } from 'lottie-react';
+import { useBoolean, useToggle } from 'react-use';
 import animation1Data from './header-1.json';
-import { useIntersection, useScroll, useWindowScroll } from 'react-use';
+import menuData from './menu.json';
 
 const font = Playfair_Display({ weight: '400', subsets: ['vietnamese'] });
 const Header: React.FC = () => {
+  const [isOpen, toggleMenu] = useToggle(false);
+  const [isLoading, setIsLoading] = useBoolean(true);
+
   const lotieRef: LottieRef = React.useRef(null);
+  const lotieMenuRef: LottieRef = React.useRef(null);
+
   useEffect(() => {
+    setIsLoading(true);
     lotieRef.current?.setSpeed(2);
+    lotieMenuRef.current?.setSpeed(4);
   }, []);
 
-  const { y } = useWindowScroll();
+  const onToggleMenu = () => {
+    if (!isOpen) {
+      lotieMenuRef.current?.playSegments([0, 60], true);
+    } else {
+      lotieMenuRef.current?.playSegments([60, 100], true);
+    }
+
+    toggleMenu();
+  };
 
   const underlineEffect =
     'hover:underline underline-offset-4 decoration-4 decoration-orange-700/25';
-  const headerRender = (
-    <>
+  const HeaderRender = (
+    <div className='relative flex flex-row justify-center md:justify-between'>
       <nav className='hidden pt-10 md:block'>
         <ul className='flex flex-row gap-8 text-xl'>
           <li className={underlineEffect}>
@@ -37,13 +53,14 @@ const Header: React.FC = () => {
       >
         <div className='flex min-h-[50px] justify-center'>
           <Lottie
+            onDOMLoaded={() => setIsLoading(false)}
             lottieRef={lotieRef}
             animationData={animation1Data}
             className='flex max-h-[50px] max-w-[100px] items-center justify-center'
             loop={false}
           />
         </div>
-        <div className='text-2xl'>Dung & Ngoc’s Wedding</div>
+        <div className='text-xl md:text-2xl'>Dung & Ngoc’s Wedding</div>
       </div>
       <nav className='hidden pt-10 md:block'>
         <ul className='flex flex-row gap-4 text-xl'>
@@ -55,27 +72,54 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </nav>
-    </>
+      <button
+        className='absolute  right-[-35px] top-[30%] z-[22] md:hidden'
+        onClick={onToggleMenu}
+      >
+        <Lottie
+          lottieRef={lotieMenuRef}
+          animationData={menuData}
+          className='flex max-h-[50px] max-w-[100px] items-center justify-center'
+          loop={false}
+          autoPlay={false}
+        />
+      </button>
+    </div>
   );
 
   return (
     <>
-      <header
-        className={[
-          font.className,
-          'flex w-full flex-row justify-center p-8 md:justify-between md:p-24',
-        ].join(' ')}
-      >
-        {headerRender}
-      </header>
-      {(y >= 180 && (
-        <header className='fixed top-0 z-[100] min-h-[100px] w-screen bg-orange-100 drop-shadow-md'>
-          <div className='flex w-full flex-row justify-center px-8 py-0 md:justify-between md:px-24'>
-            {headerRender}
+      {isLoading && (
+        <div className={font.className}>
+          <div className='fixed z-[21] flex h-screen w-screen flex-col justify-center bg-white/70 text-center backdrop-blur'>
+            <div className='text-3xl md:text-2xl'>
+              --Dung & Ngoc’s Wedding--
+            </div>
+            <div className='text-3xl md:text-2xl'>Loading....</div>
           </div>
-        </header>
-      )) ||
-        null}
+        </div>
+      )}
+      {isOpen && (
+        <div className='fixed z-[21] h-screen w-screen bg-orange-400/20 backdrop-blur'>
+          <div className='flex flex-col justify-center gap-4 px-32 py-24 text-3xl font-bold'>
+            <div className={underlineEffect}>
+              <a href='#'>Lịch trình</a>
+            </div>
+            <div className={underlineEffect}>
+              <a href='#'>Tham dự</a>
+            </div>
+            <div className={underlineEffect}>
+              <a href='#'>Ảnh cưới</a>
+            </div>
+            <div className={underlineEffect}>
+              <a href='#'>Liên Hệ</a>
+            </div>
+          </div>
+        </div>
+      )}
+      <header className={[font.className, 'w-full p-8 md:p-24'].join(' ')}>
+        {HeaderRender}
+      </header>
     </>
   );
 };

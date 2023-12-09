@@ -24,7 +24,7 @@ const Stories: React.FC = () => {
   const story4Ref = React.useRef(null);
 
   return (
-    <section className='flex w-screen flex-col py-10 text-center'>
+    <section className='flex w-screen flex-col pt-10 text-center'>
       {/* Story 1 */}
       <div className='flex flex-col md:flex-row'>
         <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl lg:flex'>
@@ -55,8 +55,8 @@ const Stories: React.FC = () => {
             src={story1Image}
           />
         </div>
-        <div className='flex flex-1 flex-col  justify-center bg-white/80 pb-10 pt-5 text-xl lg:hidden'>
-          <div className='px-10'>
+        <div className='flex flex-1 flex-col  justify-center bg-white/80 pt-5 text-xl lg:hidden'>
+          <div className='px-10 pb-10'>
             <div className='flex min-h-[100px] justify-center'>
               <Lottie
                 animationData={animation1Data}
