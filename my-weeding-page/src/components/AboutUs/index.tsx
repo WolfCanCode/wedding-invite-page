@@ -66,8 +66,8 @@ const AboutUs: React.FC = () => {
             </div>
             <div className='flex flex-col pt-4 text-center '>
               <div className='text-2xl text-rose-500'>Cô dâu</div>
-              <a href='callto:0971431928' className='text-2xl font-bold'>
-                0971.431.928
+              <a href='callto:0976492199' className='text-2xl font-bold'>
+                0976.492.199
               </a>
             </div>
           </div>
