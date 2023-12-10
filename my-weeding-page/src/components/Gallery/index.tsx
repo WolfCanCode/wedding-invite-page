@@ -9,12 +9,16 @@ import { galleryData } from './data';
 import animationData from './gallery.json';
 import 'yet-another-react-lightbox/styles.css';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import { useMount } from 'react-use';
 
 const font1 = Hachi_Maru_Pop({ weight: '400', subsets: ['latin'] });
 
 const Gallery: React.FC = () => {
   const [index, setIndex] = React.useState(-1);
-
+  const [mobGallery, setMobGallery] = React.useState<typeof galleryData>([]);
+  useMount(() => {
+    setMobGallery(getRandomImages());
+  });
   const getRandomImages = () => {
     const randomItems = [];
     for (let i = 0; i < 15; i++) {
@@ -42,7 +46,7 @@ const Gallery: React.FC = () => {
         <div className='hidden md:block'>
           <PhotoAlbum
             layout='masonry'
-            photos={getRandomImages().map((image) => ({
+            photos={mobGallery.map((image) => ({
               src: image.thumbnailUrl,
               width: image?.width ?? 1000,
               height: image?.height ?? 1000,
@@ -58,7 +62,7 @@ const Gallery: React.FC = () => {
         <div className='block md:hidden'>
           <PhotoAlbum
             layout='masonry'
-            photos={getRandomImages().map((image) => ({
+            photos={mobGallery.map((image) => ({
               src: image.thumbnailUrl,
               width: image?.width ?? 1000,
               height: image?.height ?? 1000,
