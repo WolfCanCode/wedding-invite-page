@@ -9,11 +9,12 @@ import { galleryData } from './data';
 import animationData from './gallery.json';
 import 'yet-another-react-lightbox/styles.css';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
-import { useMount } from 'react-use';
+import { useMedia, useMount } from 'react-use';
 
 const font1 = Hachi_Maru_Pop({ weight: '400', subsets: ['latin'] });
 
 const Gallery: React.FC = () => {
+  const isWide = useMedia('(min-width: 768px)');
   const [index, setIndex] = React.useState(-1);
   const [mobGallery, setMobGallery] = React.useState<typeof galleryData>([]);
   useMount(() => {
@@ -46,37 +47,19 @@ const Gallery: React.FC = () => {
       </div>
       <div className={[font1.className, 'text-5xl'].join(' ')}>Gallery</div>
       <div className='pt-10'>
-        <div className='hidden md:block'>
-          <PhotoAlbum
-            layout='masonry'
-            photos={mobGallery.map((image) => ({
-              src: image.thumbnailUrl,
-              width: image?.width ?? 1000,
-              height: image?.height ?? 1000,
-            }))}
-            targetRowHeight={150}
-            spacing={10}
-            columns={4}
-            padding={0}
-            onClick={({ photo }) => openImage(photo.src)}
-          />
-        </div>
-
-        <div className='block md:hidden'>
-          <PhotoAlbum
-            layout='masonry'
-            photos={mobGallery.map((image) => ({
-              src: image.thumbnailUrl,
-              width: image?.width ?? 1000,
-              height: image?.height ?? 1000,
-            }))}
-            targetRowHeight={150}
-            spacing={10}
-            columns={2}
-            padding={0}
-            onClick={({ photo }) => openImage(photo.src)}
-          />
-        </div>
+        <PhotoAlbum
+          layout='masonry'
+          photos={mobGallery.map((image) => ({
+            src: image.thumbnailUrl,
+            width: image?.width ?? 1000,
+            height: image?.height ?? 1000,
+          }))}
+          targetRowHeight={150}
+          spacing={10}
+          columns={isWide ? 4 : 2}
+          padding={0}
+          onClick={({ photo }) => openImage(photo.src)}
+        />
 
         <Lightbox
           index={index}

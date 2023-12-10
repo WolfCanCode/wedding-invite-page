@@ -17,11 +17,6 @@ import animation4Data from './story-4.json';
 const font = Habibi({ weight: '400', subsets: ['latin'] });
 
 const Stories: React.FC = () => {
-  const story1Ref = React.useRef(null);
-  const story2Ref = React.useRef(null);
-  const story3Ref = React.useRef(null);
-  const story4Ref = React.useRef(null);
-
   return (
     <section className='flex w-screen flex-col pt-10 text-center'>
       {/* Story 1 */}
@@ -75,7 +70,7 @@ const Stories: React.FC = () => {
       </div>
 
       {/* Story 2 */}
-      <div className='flex flex-col md:flex-row' ref={story2Ref}>
+      <div className='flex flex-col md:flex-row'>
         <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
           <Image
             alt='start-talking'
@@ -139,7 +134,7 @@ const Stories: React.FC = () => {
       </div>
 
       {/* Story 3 */}
-      <div className='flex flex-col md:flex-row' ref={story3Ref}>
+      <div className='flex flex-col md:flex-row'>
         <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl lg:flex'>
           <div className='px-20 py-4'>
             <div className='flex min-h-[120px] justify-center'>
@@ -213,7 +208,7 @@ const Stories: React.FC = () => {
       </div>
 
       {/* Story 4 */}
-      <div className='flex flex-col md:flex-row' ref={story4Ref}>
+      <div className='flex flex-col md:flex-row'>
         <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
           <Image
             alt='start-talking'

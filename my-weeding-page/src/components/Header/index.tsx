@@ -3,7 +3,13 @@
 import Lottie, { LottieRef } from 'lottie-react';
 import { Playfair_Display } from 'next/font/google';
 import React, { useEffect } from 'react';
-import { useBoolean, useMount, useToggle, useUpdateEffect } from 'react-use';
+import {
+  useBoolean,
+  useMedia,
+  useMount,
+  useToggle,
+  useUpdateEffect,
+} from 'react-use';
 import animation1Data from './header-1.json';
 import menuData from './menu.json';
 
@@ -33,20 +39,24 @@ const Header: React.FC = () => {
     toggleMenu();
   };
 
+  const isWide = useMedia('(min-width: 768px)');
+
   const underlineEffect =
     'hover:underline underline-offset-4 decoration-4 decoration-orange-700/25';
   const HeaderRender = (
     <div className='relative flex flex-row justify-center md:justify-between'>
-      <nav className='hidden pt-10 md:block'>
-        <ul className='flex flex-row gap-8 text-xl'>
-          <li className={underlineEffect}>
-            <a href='#schedule'>Lịch trình</a>
-          </li>
-          <li className={underlineEffect}>
-            <a href='#confirmation'>Tham dự</a>
-          </li>
-        </ul>
-      </nav>
+      {isWide ? (
+        <nav className='pt-10'>
+          <ul className='flex flex-row gap-8 text-xl'>
+            <li className={underlineEffect}>
+              <a href='#schedule'>Lịch trình</a>
+            </li>
+            <li className={underlineEffect}>
+              <a href='#confirmation'>Tham dự</a>
+            </li>
+          </ul>
+        </nav>
+      ) : null}
       <div
         className={[
           font.className,
@@ -64,28 +74,32 @@ const Header: React.FC = () => {
         </div>
         <div className='text-xl md:text-2xl'>Dung & Ngoc’s Wedding</div>
       </div>
-      <nav className='hidden pt-10 md:block'>
-        <ul className='flex flex-row gap-4 text-xl'>
-          <li className={underlineEffect}>
-            <a href='#gallery'>Ảnh cưới</a>
-          </li>
-          <li className={underlineEffect}>
-            <a href='#contact'>Liên hệ</a>
-          </li>
-        </ul>
-      </nav>
-      <button
-        className='absolute  right-[-35px] top-[30%] z-[22] md:hidden'
-        onClick={onToggleMenu}
-      >
-        <Lottie
-          lottieRef={lotieMenuRef}
-          animationData={menuData}
-          className='flex max-h-[50px] max-w-[100px] items-center justify-center'
-          loop={false}
-          autoPlay={false}
-        />
-      </button>
+      {isWide ? (
+        <nav className='pt-10'>
+          <ul className='flex flex-row gap-4 text-xl'>
+            <li className={underlineEffect}>
+              <a href='#gallery'>Ảnh cưới</a>
+            </li>
+            <li className={underlineEffect}>
+              <a href='#contact'>Liên hệ</a>
+            </li>
+          </ul>
+        </nav>
+      ) : null}
+      {!isWide ? (
+        <button
+          className='absolute right-[-35px] top-[30%] z-[22]'
+          onClick={onToggleMenu}
+        >
+          <Lottie
+            lottieRef={lotieMenuRef}
+            animationData={menuData}
+            className='flex max-h-[50px] max-w-[100px] items-center justify-center'
+            loop={false}
+            autoPlay={false}
+          />
+        </button>
+      ) : null}
     </div>
   );
 
