@@ -145,7 +145,7 @@ const Blessing: React.FC = () => {
           loop={true}
         />
       </div>
-      <div className='md:max-h-auto flex max-h-[300px] min-h-[100px] w-full flex-row flex-wrap gap-4 overflow-y-auto  px-10 pt-10 shadow-inner md:flex-nowrap md:overflow-x-auto md:overflow-y-hidden md:py-10'>
+      <div className='md:max-h-auto flex max-h-[300px] min-h-[100px] w-full flex-row flex-wrap gap-4 overflow-y-auto  px-10 py-10 shadow-inner md:flex-nowrap md:overflow-x-auto md:overflow-y-hidden'>
         {listBlessing.map((blessing) => (
           <div
             key={blessing.id}
