@@ -41,7 +41,7 @@ const AboutUs: React.FC = () => {
 
         <div className='flex flex-col justify-center gap-10 pt-8 md:flex-row'>
           <div>
-            <div className='h-[250px] w-[250px] overflow-hidden rounded-full'>
+            <div className='mx-auto h-[250px] w-[250px] overflow-hidden rounded-full'>
               <img
                 src='https://i.ibb.co/w7H0p3r/DSC08392.jpg'
                 className='ọbject-cover'
@@ -57,7 +57,7 @@ const AboutUs: React.FC = () => {
           </div>
 
           <div>
-            <div className='h-[250px] w-[250px] overflow-hidden rounded-full'>
+            <div className='mx-auto h-[250px] w-[250px] overflow-hidden rounded-full'>
               <img
                 src='https://i.ibb.co/YbkWsNq/DSC07247.jpg'
                 className='ọbject-cover'
