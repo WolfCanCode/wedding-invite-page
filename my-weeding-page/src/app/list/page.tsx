@@ -31,13 +31,13 @@ function List() {
   >([]);
 
   useEffect(() => {
-    fetch('/api/getList')
+    fetch('/api/getList', { cache: 'no-store' })
       .then((response) => response.json())
       .then((data) => {
         setListUser(data.users);
       });
 
-    fetch('/api/blessing')
+    fetch('/api/blessing', { cache: 'no-store' })
       .then((response) => response.json())
       .then((data) => {
         setListBlessing(data.blessings);
