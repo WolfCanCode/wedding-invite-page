@@ -16,18 +16,6 @@ interface ContactInfo {
 }
 
 const AboutUs: React.FC = () => {
-  const groom: ContactInfo = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    phone: '1234567890',
-  };
-
-  const bride: ContactInfo = {
-    name: 'Jane Smith',
-    email: 'jane@example.com',
-    phone: '9876543210',
-  };
-
   return (
     <section id='contact' className='flex flex-row justify-center py-20'>
       <div>

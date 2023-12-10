@@ -6,12 +6,33 @@ import animationData from './blessing.json';
 import animation2Data from './blessing2.json';
 
 import Lottie from 'lottie-react';
+import { useMount } from 'react-use';
 const font1 = Dancing_Script({ weight: '400', subsets: ['vietnamese'] });
 
 const Blessing: React.FC = () => {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [listBlessing, setListBlessing] = useState<
+    {
+      id?: string;
+      name?: string;
+      content?: string;
+      createdAt?: string;
+    }[]
+  >([]);
+
+  const getBlessing = () => {
+    fetch('/api/blessing', { cache: 'no-store' })
+      .then((response) => response.json())
+      .then((data) => {
+        setListBlessing(data.blessings);
+      });
+  };
+
+  useMount(() => {
+    getBlessing();
+  });
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -38,13 +59,14 @@ const Blessing: React.FC = () => {
         if (data) {
           alert('Cảm ơn bạn đã gửi lời yêu thương ♥️!');
         }
+        getBlessing();
       });
   };
 
   return (
     <section
       id='gallery'
-      className='flex flex-col justify-center bg-rose-200 py-12 text-center'
+      className='relative flex flex-col justify-center bg-rose-200 pt-12 text-center'
     >
       <div className='justify-center'>
         <Lottie
@@ -56,7 +78,7 @@ const Blessing: React.FC = () => {
       <div className={[font1.className, 'text-5xl'].join(' ')}>
         Đôi lời chúc phúc
       </div>
-      <div className='flex flex-row justify-center py-12 text-left'>
+      <div className='z-[10] flex flex-row justify-center py-12 text-left'>
         <div className='justify-flex-start flex w-[90%] flex-col gap-8 rounded-lg bg-white p-8 drop-shadow-2xl md:w-[720px] md:flex-row'>
           <div className='flex flex-1'>
             <form onSubmit={handleSubmit} className='w-full'>
@@ -91,7 +113,7 @@ const Blessing: React.FC = () => {
                   id='content'
                   name='content'
                   value={content}
-                  rows={12}
+                  rows={6}
                   onChange={(event) => setContent(event.target.value)}
                   required
                   className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
@@ -113,19 +135,26 @@ const Blessing: React.FC = () => {
             thật đặc biệt trong cuộc hành trình của chúng tôi.
             <br />
             THANK YOU ♥️
-            <br />
-            <div className='justify-center'>
-              <Lottie
-                animationData={animation2Data}
-                className='h-[200px] items-center justify-center'
-                loop={true}
-              />
-            </div>
           </div>
         </div>
       </div>
-      <div className='min-h-8 min-w-8 absolute bottom-0 left-4 h-8 w-8 rounded-3xl bg-white'>
-        aaaa
+      <div className='justify-center'>
+        <Lottie
+          animationData={animation2Data}
+          className='h-[200px] items-center justify-center'
+          loop={true}
+        />
+      </div>
+      <div className='md:max-h-auto flex max-h-[300px] min-h-[100px] w-full flex-row flex-wrap gap-4 overflow-y-auto  px-10 pt-10 shadow-inner md:flex-nowrap md:overflow-x-auto md:overflow-y-hidden md:py-10'>
+        {listBlessing.map((blessing) => (
+          <div
+            key={blessing.id}
+            className=' h-fit w-fit whitespace-nowrap rounded-3xl bg-white/25 p-4'
+          >
+            <div className='text-left text-sm font-bold'>{blessing.name}</div>
+            <div className='text-left'>{blessing.content}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
