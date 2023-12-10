@@ -11,10 +11,17 @@ datasource db {
 model User {
   id             Int      @id @default(autoincrement())
   name           String
-  phone          String
+  phone          String   @unique
   isMale         Boolean
   isFemale       Boolean
   confirmChoice  Int //0. no comment 1. yes 2. no
   numberOfGuests Int
   createdAt      DateTime @default(now())
+}
+
+model Blessing {
+  id        Int      @id @default(autoincrement())
+  name      String
+  content   String
+  createdAt DateTime @default(now())
 }

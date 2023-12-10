@@ -3,7 +3,7 @@
 import Lottie, { LottieRef } from 'lottie-react';
 import { Playfair_Display } from 'next/font/google';
 import React, { useEffect } from 'react';
-import { useBoolean, useToggle } from 'react-use';
+import { useBoolean, useMount, useToggle, useUpdateEffect } from 'react-use';
 import animation1Data from './header-1.json';
 import menuData from './menu.json';
 
@@ -15,19 +15,21 @@ const Header: React.FC = () => {
   const lotieRef: LottieRef = React.useRef(null);
   const lotieMenuRef: LottieRef = React.useRef(null);
 
-  useEffect(() => {
+  useMount(() => {
     setIsLoading(true);
     lotieRef.current?.setSpeed(2);
     lotieMenuRef.current?.setSpeed(4);
-  }, []);
+  });
 
-  const onToggleMenu = () => {
-    if (!isOpen) {
+  useUpdateEffect(() => {
+    if (isOpen) {
       lotieMenuRef.current?.playSegments([0, 60], true);
     } else {
       lotieMenuRef.current?.playSegments([60, 100], true);
     }
+  }, [isOpen]);
 
+  const onToggleMenu = () => {
     toggleMenu();
   };
 
@@ -38,10 +40,10 @@ const Header: React.FC = () => {
       <nav className='hidden pt-10 md:block'>
         <ul className='flex flex-row gap-8 text-xl'>
           <li className={underlineEffect}>
-            <a href='#'>Lịch trình</a>
+            <a href='#schedule'>Lịch trình</a>
           </li>
           <li className={underlineEffect}>
-            <a href='#'>Tham dự</a>
+            <a href='#confirmation'>Tham dự</a>
           </li>
         </ul>
       </nav>
@@ -65,7 +67,7 @@ const Header: React.FC = () => {
       <nav className='hidden pt-10 md:block'>
         <ul className='flex flex-row gap-4 text-xl'>
           <li className={underlineEffect}>
-            <a href='#'>Ảnh cưới</a>
+            <a href='#gallery'>Ảnh cưới</a>
           </li>
           <li className={underlineEffect}>
             <a href='#'>Liên hệ</a>
@@ -103,16 +105,44 @@ const Header: React.FC = () => {
         <div className='fixed z-[21] h-screen w-screen bg-orange-400/20 backdrop-blur'>
           <div className='flex flex-col justify-center gap-4 px-32 py-24 text-3xl font-bold'>
             <div className={underlineEffect}>
-              <a href='#'>Lịch trình</a>
+              <a
+                href='#schedule'
+                onClick={() => {
+                  toggleMenu(false);
+                }}
+              >
+                Lịch trình
+              </a>
             </div>
             <div className={underlineEffect}>
-              <a href='#'>Tham dự</a>
+              <a
+                href='#confirmation'
+                onClick={() => {
+                  toggleMenu(false);
+                }}
+              >
+                Tham dự
+              </a>
             </div>
             <div className={underlineEffect}>
-              <a href='#'>Ảnh cưới</a>
+              <a
+                href='#gallery'
+                onClick={() => {
+                  toggleMenu(false);
+                }}
+              >
+                Ảnh cưới
+              </a>
             </div>
             <div className={underlineEffect}>
-              <a href='#'>Liên Hệ</a>
+              <a
+                href='#'
+                onClick={() => {
+                  toggleMenu(false);
+                }}
+              >
+                Liên Hệ
+              </a>
             </div>
           </div>
         </div>

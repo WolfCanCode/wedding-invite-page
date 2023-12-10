@@ -21,11 +21,26 @@ function List() {
       createdAt?: boolean;
     }[]
   >([]);
+  const [listBlessing, setListBlessing] = useState<
+    {
+      id?: string;
+      name?: string;
+      content?: string;
+      createdAt?: string;
+    }[]
+  >([]);
+
   useEffect(() => {
     fetch('/api/getList')
       .then((response) => response.json())
       .then((data) => {
         setListUser(data.users);
+      });
+
+    fetch('/api/blessing')
+      .then((response) => response.json())
+      .then((data) => {
+        setListBlessing(data.blessings);
       });
   }, []);
 
@@ -74,6 +89,38 @@ function List() {
               </td>
               <td className='px-4'>{user.numberOfGuests}</td>
               <td className='px-4'>{user.createdAt}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h1>Danh sách blessing</h1>
+      <table
+        // make a nice table with tailwind css
+        // https://tailwindcss.com/docs/tables
+        // className='table-auto border-collapse border border-green-800'
+        className='table-auto border-collapse overflow-y-auto border border-green-800'
+      >
+        <thead>
+          <tr
+            // make a nice table
+            // https://tailwindcss.com/docs/tables
+            // className='bg-green-500 text-white'
+            className='bg-rose-200 text-white'
+          >
+            <th className='px-4'>No</th>
+            <th className='px-4'>Name</th>
+            <th className='px-4'>Content</th>
+            <th className='px-4'>Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {listBlessing.map((blessing, index) => (
+            <tr key={index}>
+              <td className='px-4'>{index + 1}</td>
+              <td className='px-4'>{blessing.name}</td>
+              <td className='px-4'>{blessing.content}</td>
+              <td className='px-4'>{blessing.createdAt}</td>
             </tr>
           ))}
         </tbody>

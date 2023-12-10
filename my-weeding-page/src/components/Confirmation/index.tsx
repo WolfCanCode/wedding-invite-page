@@ -12,7 +12,7 @@ function Confirmation() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [attendance, setAttendance] = useState(0);
-  const [noGuest, setNoGuests] = useState(0);
+  const [noGuest, setNoGuests] = useState(1);
   const [isMale, setIsMale] = useState(false);
   const [isFemale, setIsFemale] = useState(false);
   const [isLoading, setLoading] = useState(false);
@@ -60,7 +60,7 @@ function Confirmation() {
 
   // Return the JSX code for the UI
   return (
-    <div className=''>
+    <section id='confirmation'>
       {/* Add a header with a red background and white text */}
       <header className='bg-[#7A4732] py-4 text-center text-2xl font-bold text-white'>
         Xác nhận tham dự
@@ -83,15 +83,18 @@ function Confirmation() {
                   setIsMale(!isMale);
                 }}
                 className={[
-                  'flex h-[100px] w-[100px] cursor-pointer justify-center rounded-full',
-                  isMale ? 'bg-[#7a48323b]' : '',
+                  'flex h-[100px] w-[100px] cursor-pointer flex-col justify-center rounded-full text-center',
+                  isMale ? 'bg-blue-200' : '',
                 ].join(' ')}
               >
                 <Lottie
                   animationData={animation1Data}
-                  className='flex max-h-[100px] max-w-[100px] items-center justify-center'
+                  className='flex max-h-[100px] max-w-[100px] items-center justify-center '
                   loop={true}
                 />
+                <span className='text-lg font-bold text-blue-500'>
+                  Nhà trai
+                </span>
               </div>
               <div
                 onClick={() => {
@@ -99,8 +102,8 @@ function Confirmation() {
                   setIsFemale(!isFemale);
                 }}
                 className={[
-                  'flex h-[100px] w-[100px] cursor-pointer justify-center rounded-full',
-                  isFemale ? 'bg-[#7a48323b]' : '',
+                  'flex h-[100px] w-[100px] cursor-pointer flex-col justify-center rounded-full text-center',
+                  isFemale ? 'bg-pink-200' : '',
                 ].join(' ')}
               >
                 <Lottie
@@ -108,6 +111,7 @@ function Confirmation() {
                   className='flex max-h-[100px] max-w-[100px] items-center justify-center'
                   loop={true}
                 />
+                <span className='text-lg font-bold text-pink-500'>Nhà gái</span>
               </div>
             </div>
           </div>
@@ -200,7 +204,7 @@ function Confirmation() {
           </button>
         </form>
       </main>
-    </div>
+    </section>
   );
 }
 

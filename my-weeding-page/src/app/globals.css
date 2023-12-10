@@ -6,6 +6,10 @@
   color: #7A4732;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body, html{
   overflow-x: hidden;
 }

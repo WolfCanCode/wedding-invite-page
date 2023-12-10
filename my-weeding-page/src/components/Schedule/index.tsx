@@ -14,7 +14,10 @@ const font3 = Reem_Kufi_Fun({ weight: '400', subsets: ['vietnamese'] });
 
 const Schedule: React.FC = () => {
   return (
-    <section className='flex flex-col justify-center bg-orange-100 py-5 text-center md:py-20'>
+    <section
+      id='schedule'
+      className='flex flex-col justify-center bg-orange-100 py-5 text-center md:py-20'
+    >
       <div className='flex flex-col justify-center gap-12 text-center'>
         <div className={[font1.className, 'text-5xl md:text-5xl'].join(' ')}>
           Lịch Trình

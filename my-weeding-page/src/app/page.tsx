@@ -1,4 +1,6 @@
+import Blessing from '@/components/Blessing';
 import Confirmation from '@/components/Confirmation';
+import Gallery from '@/components/Gallery';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Schedule from '@/components/Schedule';
@@ -14,6 +16,8 @@ export default function Home() {
       <Stories />
       <Schedule />
       <Confirmation />
+      <Gallery />
+      <Blessing />
     </main>
   );
 }
