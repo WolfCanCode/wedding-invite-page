@@ -64,10 +64,10 @@ const Gallery: React.FC = () => {
         <Lightbox
           index={index}
           plugins={[Zoom]}
-          slides={galleryData.map((image) => ({
+          slides={mobGallery.map((image) => ({
             src: image.url,
-            width: 1000,
-            height: 1000,
+            width: image.width,
+            height: image.height,
           }))}
           open={index >= 0}
           close={() => setIndex(-1)}
