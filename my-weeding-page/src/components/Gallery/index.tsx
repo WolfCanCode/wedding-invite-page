@@ -27,7 +27,12 @@ const Gallery: React.FC = () => {
     }
     return randomItems;
   };
-  console.log(getRandomImages().length);
+
+  const openImage = (index: number) => {
+    setIndex(
+      galleryData.findIndex((image) => image.url === mobGallery[index].url)
+    );
+  };
 
   return (
     <section
@@ -55,7 +60,7 @@ const Gallery: React.FC = () => {
             spacing={10}
             columns={4}
             padding={0}
-            onClick={({ index: current }) => setIndex(current)}
+            onClick={({ index }) => openImage(index)}
           />
         </div>
 
@@ -71,7 +76,7 @@ const Gallery: React.FC = () => {
             spacing={10}
             columns={2}
             padding={0}
-            onClick={({ index: current }) => setIndex(current)}
+            onClick={({ index }) => openImage(index)}
           />
         </div>
 
