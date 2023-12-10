@@ -71,8 +71,8 @@ const Gallery: React.FC = () => {
           slides={
             mobGallery?.map((image) => ({
               src: image?.url,
-              width: image?.width,
-              height: image?.height,
+              width: screen.width,
+              height: screen.height,
             })) ?? []
           }
           open={index >= 0}
