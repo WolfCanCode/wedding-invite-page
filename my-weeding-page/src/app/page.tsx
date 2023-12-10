@@ -1,3 +1,4 @@
+import AboutUs from '@/components/AboutUs';
 import Blessing from '@/components/Blessing';
 import Confirmation from '@/components/Confirmation';
 import Gallery from '@/components/Gallery';
@@ -18,6 +19,10 @@ export default function Home() {
       <Confirmation />
       <Gallery />
       <Blessing />
+      <AboutUs />
+      <div className='border-2 border-t-orange-200 bg-white py-4 text-center'>
+        The website is a gift from <strong>An house</strong> with ♥️
+      </div>
     </main>
   );
 }

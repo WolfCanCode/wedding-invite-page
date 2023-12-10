@@ -56,8 +56,8 @@ const Blessing: React.FC = () => {
       <div className={[font1.className, 'text-5xl'].join(' ')}>
         Đôi lời chúc phúc
       </div>
-      <div className='flex flex-row justify-center pt-12 text-left'>
-        <div className='justify-flex-start flex w-[720px] flex-row gap-8 rounded-lg bg-white p-8 drop-shadow-2xl'>
+      <div className='flex flex-row justify-center py-12 text-left'>
+        <div className='justify-flex-start flex w-[90%] flex-col gap-8 rounded-lg bg-white p-8 drop-shadow-2xl md:w-[720px] md:flex-row'>
           <div className='flex flex-1'>
             <form onSubmit={handleSubmit} className='w-full'>
               <div className='mb-4'>

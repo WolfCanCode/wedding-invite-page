@@ -70,7 +70,7 @@ const Header: React.FC = () => {
             <a href='#gallery'>Ảnh cưới</a>
           </li>
           <li className={underlineEffect}>
-            <a href='#'>Liên hệ</a>
+            <a href='#contact'>Liên hệ</a>
           </li>
         </ul>
       </nav>
@@ -136,7 +136,7 @@ const Header: React.FC = () => {
             </div>
             <div className={underlineEffect}>
               <a
-                href='#'
+                href='#contact'
                 onClick={() => {
                   toggleMenu(false);
                 }}
