@@ -3,7 +3,7 @@
 import Lottie from 'lottie-react';
 import { Hachi_Maru_Pop } from 'next/font/google';
 import React from 'react';
-import PhotoAlbum from 'react-photo-album';
+import PhotoAlbum, { Image } from 'react-photo-album';
 import Lightbox from 'yet-another-react-lightbox';
 import { galleryData } from './data';
 import animationData from './gallery.json';
@@ -28,10 +28,8 @@ const Gallery: React.FC = () => {
     return randomItems;
   };
 
-  const openImage = (index: number) => {
-    setIndex(
-      galleryData.findIndex((image) => image.url === mobGallery[index].url)
-    );
+  const openImage = (src: string) => {
+    setIndex(galleryData.findIndex((image) => image.thumbnailUrl === src));
   };
 
   return (
@@ -60,7 +58,7 @@ const Gallery: React.FC = () => {
             spacing={10}
             columns={4}
             padding={0}
-            onClick={({ index }) => openImage(index)}
+            onClick={({ photo }) => openImage(photo.src)}
           />
         </div>
 
@@ -76,7 +74,7 @@ const Gallery: React.FC = () => {
             spacing={10}
             columns={2}
             padding={0}
-            onClick={({ index }) => openImage(index)}
+            onClick={({ photo }) => openImage(photo.src)}
           />
         </div>
 
