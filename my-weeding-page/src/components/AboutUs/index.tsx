@@ -4,6 +4,9 @@ import { Dancing_Script } from 'next/font/google';
 import animationData from './aboutus.json';
 import Lottie from 'lottie-react';
 import Image from 'next/image';
+import qrMale from './qr-male.png';
+import qrFemale from './qr-female.png';
+
 const font1 = Dancing_Script({ weight: '400', subsets: ['vietnamese'] });
 
 interface ContactInfo {
@@ -54,6 +57,20 @@ const AboutUs: React.FC = () => {
                 0971.431.928
               </a>
             </div>
+            <div className='relative mx-auto mt-4 h-[150px] w-[150px]'>
+              <Image
+                alt='qr-1'
+                src={qrMale}
+                placeholder='blur'
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            <div className='flex flex-col  pt-2 text-center'>
+              <div>Hoàng Vũ Dũng</div>
+              <div>STK: 2452821</div>
+              <div>Ngân hàng: ACB</div>
+            </div>
           </div>
 
           <div>
@@ -69,6 +86,20 @@ const AboutUs: React.FC = () => {
               <a href='callto:0976492199' className='text-2xl font-bold'>
                 0976.492.199
               </a>
+            </div>
+            <div className='relative mx-auto mt-4 mt-4 h-[150px] w-[150px]'>
+              <Image
+                alt='qr-2'
+                src={qrFemale}
+                placeholder='blur'
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            <div className='mx-auto flex flex-col pt-2 text-center'>
+              <div>Vũ Khánh Ngọc</div>
+              <div>STK: 0976492199</div>
+              <div>Ngân hàng: TP Bank</div>
             </div>
           </div>
         </div>

@@ -33,9 +33,9 @@ function Confirmation() {
       },
       body: JSON.stringify({
         name,
-        phone,
+        phone: 'N/A',
         confirmChoice: attendance,
-        numberOfGuests: noGuest,
+        numberOfGuests: 1,
         isMale,
         isFemale,
       }),
@@ -134,7 +134,7 @@ function Confirmation() {
             />
           </div>
           {/* Add a form group for the phone input */}
-          <div className='mb-4'>
+          {/* <div className='mb-4'>
             <label
               htmlFor='phone'
               className='block text-sm font-medium text-gray-700'
@@ -151,7 +151,7 @@ function Confirmation() {
               required
               className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
             />
-          </div>
+          </div> */}
           {/* Add a form group for the attendance dropdown */}
           <div className='mb-4'>
             <label
@@ -173,11 +173,11 @@ function Confirmation() {
             >
               <option value='1'>Có</option>
               <option value='2'>Không</option>
-              <option value='0'>Chưa biết</option>
+              {/* <option value='0'>Chưa biết</option> */}
             </select>
           </div>
           {/* Add a form group for the hotel radio buttons */}
-          <div className='mb-4'>
+          {/* <div className='mb-4'>
             <span className='block text-sm font-medium text-gray-700'>
               Bạn có người đi cùng không? (Tính cả bản thân bạn)
             </span>
@@ -193,7 +193,7 @@ function Confirmation() {
                 className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
               />
             </div>
-          </div>
+          </div> */}
           {/* Add a footer with a submit button */}
           <button
             disabled={isLoading}

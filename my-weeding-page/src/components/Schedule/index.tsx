@@ -9,8 +9,8 @@ import animation2Data from './female.json';
 import animationCalData from './calendar.json';
 
 const font1 = Dancing_Script({ weight: '400', subsets: ['vietnamese'] });
-const font2 = Unica_One({ weight: '400', subsets: ['vietnamese'] });
-const font3 = Reem_Kufi_Fun({ weight: '400', subsets: ['vietnamese'] });
+// const font2 = Unica_One({ weight: '400', subsets: ['vietnamese'] });
+// const font3 = Reem_Kufi_Fun({ weight: '400', subsets: ['vietnamese'] });
 
 const Schedule: React.FC = () => {
   return (
@@ -31,16 +31,11 @@ const Schedule: React.FC = () => {
         </div>
       </div>
       <div className='flex flex-row justify-center'>
-        <div
-          className={[
-            font2.className,
-            'text-3xl underline decoration-pink-400 decoration-4 underline-offset-4 md:text-3xl',
-          ].join(' ')}
-        >
+        <div className={['text-3xl  md:text-3xl'].join(' ')}>
           Ngày 16.12.2023
         </div>
       </div>
-      <div className='mt-4 flex min-h-[250px] flex-col justify-center gap-4 px-4 py-4 text-center md:flex-row'>
+      <div className='mt-4 flex min-h-[250px] flex-col justify-center gap-12 px-4 py-4 text-center md:flex-row'>
         <div className='md:px-18 mx-auto flex w-[350px] flex-col rounded-lg border-2 border-solid border-orange-300 bg-white px-10 py-6 text-center md:mx-0 md:w-[450px]'>
           <div className='flex min-h-[150px] justify-center'>
             <Lottie
@@ -50,21 +45,16 @@ const Schedule: React.FC = () => {
             />
           </div>
           <div>
-            <div
-              className={[font3.className, 'pb-2 text-3xl text-pink-500'].join(
-                ' '
-              )}
-            >
+            <div className={['pb-2 text-3xl text-pink-500'].join(' ')}>
               Nhà gái
             </div>
-            <div
-              className={[font3.className, 'text-xl text-green-500'].join(' ')}
-            >
+            <div className={['text-xl text-green-500'].join(' ')}>
               10:30 đón khách
             </div>
-            <div className={[font3.className, 'text-xl text-black'].join(' ')}>
-              Tầng 3 - Sảnh Inter, Trung tâm tiệc cưới Nguyên Đình. Số 7-9
-              Nguyễn Văn Linh, Long Biên, Hà Nội
+            <div className={['text-xl text-black'].join(' ')}>
+              Tầng 3 - Sảnh Inter, Trung tâm tiệc cưới Nguyên Đình.
+              <br />
+              Số 7-9 Nguyễn Văn Linh, Long Biên, Hà Nội
             </div>
             <div className='mx-auto my-4 w-fit'>
               <AddToCalendarButton
@@ -110,21 +100,15 @@ const Schedule: React.FC = () => {
             />
           </div>
           <div>
-            <div
-              className={[font3.className, 'pb-2 text-3xl text-blue-500'].join(
-                ' '
-              )}
-            >
+            <div className={['pb-2 text-3xl text-blue-500'].join(' ')}>
               Nhà trai
             </div>
-            <div
-              className={[font3.className, 'text-xl text-green-500'].join(' ')}
-            >
+            <div className={['text-xl text-green-500'].join(' ')}>
               15:00 đón khách
             </div>
-            <div className={[font3.className, 'text-xl text-black'].join(' ')}>
-              Trang phục biểu diễn Đức Nhàn, TDP Quán Trắng, Tân An, Yên Dũng,
-              Bắc Giang
+            <div className={['text-xl text-black'].join(' ')}>
+              Trang phục biểu diễn Đức Nhàn <br />
+              TDP Quán Trắng, Tân An, Yên Dũng, Bắc Giang
             </div>
             <div className='my-4'>
               <div className='mx-auto my-4 w-fit'>

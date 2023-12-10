@@ -14,6 +14,17 @@ const font1 = Hachi_Maru_Pop({ weight: '400', subsets: ['latin'] });
 
 const Gallery: React.FC = () => {
   const [index, setIndex] = React.useState(-1);
+
+  const getRandomImages = () => {
+    const randomItems = [];
+    for (let i = 0; i < 15; i++) {
+      const randomIndex = Math.floor(Math.random() * 39);
+      randomItems.push(galleryData[randomIndex]);
+    }
+    return randomItems;
+  };
+  console.log(getRandomImages().length);
+
   return (
     <section
       id='gallery'
@@ -31,7 +42,7 @@ const Gallery: React.FC = () => {
         <div className='hidden md:block'>
           <PhotoAlbum
             layout='masonry'
-            photos={galleryData.map((image) => ({
+            photos={getRandomImages().map((image) => ({
               src: image.thumbnailUrl,
               width: image?.width ?? 1000,
               height: image?.height ?? 1000,
@@ -47,7 +58,7 @@ const Gallery: React.FC = () => {
         <div className='block md:hidden'>
           <PhotoAlbum
             layout='masonry'
-            photos={galleryData.map((image) => ({
+            photos={getRandomImages().map((image) => ({
               src: image.thumbnailUrl,
               width: image?.width ?? 1000,
               height: image?.height ?? 1000,

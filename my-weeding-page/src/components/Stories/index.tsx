@@ -15,6 +15,7 @@ import animation2Data from './story-2.json';
 import animation3Data from './story-3.json';
 import animation4Data from './story-4.json';
 import { useIntersection, useMeasure, useScroll } from 'react-use';
+import { useTransform, useViewportScroll } from 'framer-motion';
 const font = Habibi({ weight: '400', subsets: ['latin'] });
 
 const Stories: React.FC = () => {
@@ -23,6 +24,9 @@ const Stories: React.FC = () => {
   const story3Ref = React.useRef(null);
   const story4Ref = React.useRef(null);
 
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 2]);
+  console.log(scrollYProgress);
   return (
     <section className='flex w-screen flex-col pt-10 text-center'>
       {/* Story 1 */}

@@ -124,6 +124,9 @@ const Blessing: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className='min-h-8 min-w-8 absolute bottom-0 left-4 h-8 w-8 rounded-3xl bg-white'>
+        aaaa
+      </div>
     </section>
   );
 };
