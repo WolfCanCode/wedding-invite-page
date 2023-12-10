@@ -149,10 +149,12 @@ const Blessing: React.FC = () => {
         {listBlessing.map((blessing) => (
           <div
             key={blessing.id}
-            className=' h-fit w-fit whitespace-nowrap rounded-3xl bg-white/25 p-4'
+            className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
           >
             <div className='text-left text-sm font-bold'>{blessing.name}</div>
-            <div className='text-left'>{blessing.content}</div>
+            <div className='max-w-[300px] whitespace-normal text-left'>
+              {blessing.content}
+            </div>
           </div>
         ))}
       </div>
