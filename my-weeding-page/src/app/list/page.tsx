@@ -31,7 +31,7 @@ function List() {
   >([]);
 
   useEffect(() => {
-    fetch('/api/getList', { cache: 'no-store' })
+    fetch('/api/confirmation', { cache: 'no-store' })
       .then((response) => response.json())
       .then((data) => {
         setListUser(data.users);
