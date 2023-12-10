@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "db:generate & next build",
     "start": "next start",
     "lint": "next lint",
-    "db:generate":"prisma migrate dev"
+    "db:generate":"prisma migrate"
   },
   "dependencies": {
     "@prisma/client": "^5.7.0",

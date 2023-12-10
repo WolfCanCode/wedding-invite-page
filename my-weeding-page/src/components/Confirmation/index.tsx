@@ -51,6 +51,7 @@ function Confirmation() {
         setNoGuests(0);
         setIsMale(false);
         setIsFemale(false);
+        setLoading(false);
         if (data) {
           alert('Cảm ơn bạn đã xác nhận tham dự, chúc bạn một ngày vui vẻ!');
         }
@@ -195,7 +196,7 @@ function Confirmation() {
             type='submit'
             className='w-full rounded bg-[#7A4732] px-4 py-4 text-center text-xl font-bold text-white'
           >
-            Confirm
+            {isLoading ? 'Đang xử lý...' : 'Xác nhận'}
           </button>
         </form>
       </main>
