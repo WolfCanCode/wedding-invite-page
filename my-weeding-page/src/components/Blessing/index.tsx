@@ -100,9 +100,9 @@ const Blessing: React.FC = () => {
               <button
                 disabled={isLoading}
                 type='submit'
-                className='w-full rounded bg-[#7A4732] px-4 py-4 text-center text-xl font-bold text-white'
+                className='w-full rounded bg-rose-700 px-4 py-4 text-center text-xl font-bold text-white'
               >
-                {isLoading ? 'Đang xử lý...' : 'Xác nhận'}
+                {isLoading ? 'Đang xử lý...' : 'Gửi'}
               </button>
             </form>
           </div>
