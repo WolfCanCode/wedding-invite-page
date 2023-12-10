@@ -20,17 +20,19 @@ const Gallery: React.FC = () => {
   useMount(() => {
     setMobGallery(getRandomImages());
   });
+
   const getRandomImages = () => {
     const randomItems = [];
+    const newGalleryData = [...galleryData];
     for (let i = 0; i < 15; i++) {
-      const randomIndex = Math.floor(Math.random() * 39);
-      randomItems.push(galleryData[randomIndex]);
+      const randomIndex = Math.floor(
+        Math.random() * (newGalleryData.length - 1)
+      );
+
+      randomItems.push({ ...newGalleryData[randomIndex] });
+      newGalleryData.splice(randomIndex, 1);
     }
     return randomItems;
-  };
-
-  const openImage = (src: string) => {
-    setIndex(galleryData.findIndex((image) => image.thumbnailUrl === src));
   };
 
   return (
@@ -49,26 +51,30 @@ const Gallery: React.FC = () => {
       <div className='pt-10'>
         <PhotoAlbum
           layout='masonry'
-          photos={mobGallery.map((image) => ({
-            src: image.thumbnailUrl,
-            width: image?.width ?? 1000,
-            height: image?.height ?? 1000,
-          }))}
+          photos={
+            mobGallery?.map((image) => ({
+              src: image?.thumbnailUrl,
+              width: image?.width ?? 1000,
+              height: image?.height ?? 1000,
+            })) || []
+          }
           targetRowHeight={150}
           spacing={10}
           columns={isWide ? 4 : 2}
           padding={0}
-          onClick={({ photo }) => openImage(photo.src)}
+          onClick={({ index }) => setIndex(index)}
         />
 
         <Lightbox
           index={index}
           plugins={[Zoom]}
-          slides={mobGallery.map((image) => ({
-            src: image.url,
-            width: image.width,
-            height: image.height,
-          }))}
+          slides={
+            mobGallery?.map((image) => ({
+              src: image?.url,
+              width: image?.width,
+              height: image?.height,
+            })) ?? []
+          }
           open={index >= 0}
           close={() => setIndex(-1)}
         />

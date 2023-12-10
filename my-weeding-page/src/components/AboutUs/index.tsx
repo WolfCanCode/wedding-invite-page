@@ -4,6 +4,8 @@ import { Dancing_Script } from 'next/font/google';
 import animationData from './aboutus.json';
 import Lottie from 'lottie-react';
 import Image from 'next/image';
+import bride from './bride.jpeg';
+import groom from './groom.jpeg';
 import qrMale from './qr-male.png';
 import qrFemale from './qr-female.png';
 
@@ -32,10 +34,13 @@ const AboutUs: React.FC = () => {
 
         <div className='flex flex-col justify-center gap-10 pt-8 md:flex-row'>
           <div>
-            <div className='mx-auto h-[250px] w-[250px] overflow-hidden rounded-full'>
-              <img
-                src='https://i.ibb.co/w7H0p3r/DSC08392.jpg'
-                className='ọbject-cover'
+            <div className='relative mx-auto h-[250px] w-[250px] overflow-hidden rounded-full'>
+              <Image
+                placeholder='blur'
+                src={groom}
+                fill
+                sizes='100%'
+                style={{ objectFit: 'cover', objectPosition: '0% 40%' }}
                 alt='groom'
               />
             </div>
@@ -47,10 +52,11 @@ const AboutUs: React.FC = () => {
             </div>
             <div className='relative mx-auto mt-4 h-[150px] w-[150px]'>
               <Image
+                placeholder='blur'
                 alt='qr-1'
                 src={qrMale}
-                placeholder='blur'
                 fill
+                sizes='100%'
                 style={{ objectFit: 'cover' }}
               />
             </div>
@@ -62,10 +68,13 @@ const AboutUs: React.FC = () => {
           </div>
 
           <div>
-            <div className='mx-auto h-[250px] w-[250px] overflow-hidden rounded-full'>
-              <img
-                src='https://i.ibb.co/YbkWsNq/DSC07247.jpg'
-                className='ọbject-cover'
+            <div className='relative mx-auto h-[250px] w-[250px] overflow-hidden rounded-full'>
+              <Image
+                placeholder='blur'
+                src={bride}
+                fill
+                sizes='100%'
+                style={{ objectFit: 'cover', objectPosition: '0% 0%' }}
                 alt='bride'
               />
             </div>
@@ -81,6 +90,7 @@ const AboutUs: React.FC = () => {
                 src={qrFemale}
                 placeholder='blur'
                 fill
+                sizes='100%'
                 style={{ objectFit: 'cover' }}
               />
             </div>
