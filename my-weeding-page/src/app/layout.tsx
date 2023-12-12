@@ -3,6 +3,7 @@ import './globals.css';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: 'Hoang Dung & Khanh Ngoc Wedding',
@@ -18,7 +19,10 @@ export default function RootLayout({
     <html lang='en'>
       <SpeedInsights />
       <Theme>
-        <body>{children}</body>
+        <body>
+          {children}
+          <Analytics />
+        </body>
       </Theme>
     </html>
   );
