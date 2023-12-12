@@ -88,7 +88,7 @@ function List() {
         </tbody>
       </table>
 
-      <h1 class={'mt-4'}>Danh sách blessing</h1>
+      <h1 className='mt-4'>Danh sách blessing</h1>
       <table
         // make a nice table with tailwind css
         // https://tailwindcss.com/docs/tables
