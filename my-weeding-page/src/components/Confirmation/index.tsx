@@ -11,7 +11,7 @@ function Confirmation() {
   // Use React hooks to manage the state of the form inputs
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [attendance, setAttendance] = useState(0);
+  const [attendance, setAttendance] = useState(1);
   const [noGuest, setNoGuests] = useState(1);
   const [isMale, setIsMale] = useState(false);
   const [isFemale, setIsFemale] = useState(false);
