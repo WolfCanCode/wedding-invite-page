@@ -41,7 +41,7 @@ export default function NextJsImage({ slide, rect }: any) {
         src={slide}
         loading='eager'
         draggable={false}
-        placeholder={slide.blurDataURL ? 'blur' : undefined}
+        placeholder={'blur'}
         style={{ objectFit: cover ? 'cover' : 'contain' }}
         sizes={`${Math.ceil((width / window.innerWidth) * 100)}vw`}
       />

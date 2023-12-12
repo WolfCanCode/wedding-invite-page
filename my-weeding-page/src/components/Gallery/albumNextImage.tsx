@@ -11,7 +11,7 @@ export default function AlbumNextJsImage({
       <Image
         fill
         src={photo}
-        placeholder={'blurDataURL' in photo ? 'blur' : undefined}
+        placeholder={'blur'}
         {...{ alt, title, sizes, className, onClick }}
       />
     </div>
