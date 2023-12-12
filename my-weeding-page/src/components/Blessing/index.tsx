@@ -207,29 +207,13 @@ const Blessing: React.FC = () => {
                 <div className='text-left text-sm font-bold'>
                   {censorName(blessing.name || '')}
                 </div>
-                <div className='max-w-[300px] whitespace-normal text-left'>
+                <div className='whitespace-normal text-left'>
                   {blessing.content}
                 </div>
               </div>
             ))}
           </div>
-        ) : (
-          <div className='scroll-element-mobile secondaryMobile mt-12 flex flex-row flex-wrap justify-center gap-4 py-10  md:flex-nowrap '>
-            {listBlessing.map((blessing) => (
-              <div
-                key={blessing.id}
-                className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
-              >
-                <div className='text-left text-sm font-bold'>
-                  {censorName(blessing.name || '')}
-                </div>
-                <div className='max-w-[300px] whitespace-normal text-left'>
-                  {blessing.content}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        ) : null}
       </div>
     </section>
   );
