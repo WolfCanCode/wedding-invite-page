@@ -344,6 +344,14 @@ const Header: React.FC = () => {
           </div>
         </Dialog.Content>
       </Dialog.Root>
+      <div
+        className='text-ou fixed bottom-4 right-4 z-50 cursor-pointer rounded-full p-4 font-bold drop-shadow-[0_1.2px_1.2px_rgba(255,255,255,1)]'
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      >
+        Top
+      </div>
     </>
   );
 };
