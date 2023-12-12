@@ -17,11 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <SpeedInsights />
       <Theme>
         <body>
           {children}
           <Analytics />
+          <SpeedInsights />
         </body>
       </Theme>
     </html>
