@@ -197,23 +197,6 @@ const Blessing: React.FC = () => {
             ))}
           </div>
         )}
-        {isWide ? (
-          <div className='scroll-element secondary  flex flex-row flex-wrap gap-4 py-10  md:flex-nowrap '>
-            {listBlessing.reverse().map((blessing) => (
-              <div
-                key={blessing.id}
-                className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
-              >
-                <div className='text-left text-sm font-bold'>
-                  {censorName(blessing.name || '')}
-                </div>
-                <div className='whitespace-normal text-left'>
-                  {blessing.content}
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : null}
       </div>
     </section>
   );
