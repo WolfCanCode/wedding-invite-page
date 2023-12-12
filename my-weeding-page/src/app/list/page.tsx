@@ -63,11 +63,8 @@ function List() {
           >
             <th className='px-4'>No</th>
             <th className='px-4'>Name</th>
-            <th className='px-4'>Phone</th>
             <th className='px-4'>Attendence</th>
             <th className='px-4'>Confirmation</th>
-            <th className='px-4'>Number of Guests</th>
-            <th className='px-4'>Created At</th>
           </tr>
         </thead>
         <tbody>
@@ -75,7 +72,6 @@ function List() {
             <tr key={index}>
               <td className='px-4'>{index + 1}</td>
               <td className='px-4'>{user.name}</td>
-              <td className='px-4'>{user.phone}</td>
               <td className='px-4'>
                 {user.isMale ? 'Nhà trai ' : ''}{' '}
                 {user.isFemale ? 'Nhà gái' : ''}
@@ -87,14 +83,12 @@ function List() {
                     ? 'Không'
                     : 'Không biết'}
               </td>
-              <td className='px-4'>{user.numberOfGuests}</td>
-              <td className='px-4'>{user.createdAt}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <h1>Danh sách blessing</h1>
+      <h1 class={'mt-4'}>Danh sách blessing</h1>
       <table
         // make a nice table with tailwind css
         // https://tailwindcss.com/docs/tables
@@ -111,7 +105,6 @@ function List() {
             <th className='px-4'>No</th>
             <th className='px-4'>Name</th>
             <th className='px-4'>Content</th>
-            <th className='px-4'>Created At</th>
           </tr>
         </thead>
         <tbody>
@@ -120,7 +113,6 @@ function List() {
               <td className='px-4'>{index + 1}</td>
               <td className='px-4'>{blessing.name}</td>
               <td className='px-4'>{blessing.content}</td>
-              <td className='px-4'>{blessing.createdAt}</td>
             </tr>
           ))}
         </tbody>
