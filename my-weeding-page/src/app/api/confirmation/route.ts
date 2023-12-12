@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-function generateRandomNumber(digits) {
+function generateRandomNumber(digits:number) {
   var randomNumber = "";
   for (var i = 0; i < digits; i++) {
     randomNumber += Math.floor(Math.random() * 10).toString();
