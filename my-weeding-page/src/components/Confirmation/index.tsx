@@ -60,13 +60,13 @@ function Confirmation() {
 
   // Return the JSX code for the UI
   return (
-    <section id='confirmation'>
+    <section id='confirmation' className='relative flex flex-col'>
       {/* Add a header with a red background and white text */}
       <header className='bg-[#7A4732] py-4 text-center text-xl font-bold text-white md:text-2xl'>
         Đến chung vui cùng chúng mình nhé!
       </header>
       {/* Add a main section with a form */}
-      <main className='mx-auto max-w-lg p-8'>
+      <div className='z-[10] mx-auto my-8 min-w-[90vw] max-w-lg rounded-lg bg-white p-8 drop-shadow-lg md:min-w-[400px]'>
         <form onSubmit={handleSubmit}>
           {/* Add a form group for the name input */}
           <div className='mb-4'>
@@ -203,7 +203,7 @@ function Confirmation() {
             {isLoading ? 'Đang xử lý...' : 'Xác nhận'}
           </button>
         </form>
-      </main>
+      </div>
     </section>
   );
 }

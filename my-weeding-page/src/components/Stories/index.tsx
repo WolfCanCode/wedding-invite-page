@@ -78,7 +78,7 @@ const Stories: React.FC = () => {
     <section className='flex w-screen flex-col pt-10 text-center'>
       {/* Story 1 */}
       <div className='flex flex-col md:flex-row'>
-        <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl lg:flex'>
+        <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl md:flex'>
           <div className='px-20 py-4'>
             <div className='flex min-h-[120px] justify-center'>
               <Lottie
@@ -105,11 +105,11 @@ const Stories: React.FC = () => {
           </div>
         </div>
         <div
-          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[800px]'
+          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[600px] lg:min-h-[800px]'
           ref={secRef1}
         >
           <motion.div
-            className='relative min-h-[400px] md:min-h-[800px]'
+            className='relative min-h-[400px] md:min-h-[600px] lg:min-h-[800px]'
             style={{ scale: scale1 }}
           >
             <Image
@@ -122,7 +122,7 @@ const Stories: React.FC = () => {
             />
           </motion.div>
         </div>
-        <div className='flex flex-1 flex-col  justify-center bg-white/80 pt-5 text-xl lg:hidden'>
+        <div className='flex flex-1 flex-col  justify-center bg-white/80 pt-5 text-xl md:hidden'>
           <div className='px-10 pb-10'>
             <div className='flex min-h-[100px] justify-center'>
               <Lottie
@@ -153,11 +153,11 @@ const Stories: React.FC = () => {
       {/* Story 2 */}
       <div className='flex flex-col md:flex-row'>
         <div
-          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[800px]'
+          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[600px] lg:min-h-[800px]'
           ref={secRef2}
         >
           <motion.div
-            className='relative min-h-[400px] md:min-h-[800px]'
+            className='relative min-h-[400px] md:min-h-[600px] lg:min-h-[800px]'
             style={{ scale: scale2 }}
           >
             <Image
@@ -170,7 +170,7 @@ const Stories: React.FC = () => {
             />
           </motion.div>
         </div>
-        <div className='hidden flex-1 flex-col  justify-center bg-[#431407] text-2xl lg:flex '>
+        <div className='hidden flex-1 flex-col  justify-center bg-[#431407] text-2xl md:flex '>
           <div className='px-20  py-4'>
             <div className='flex min-h-[50px] justify-center'>
               <Lottie
@@ -197,7 +197,7 @@ const Stories: React.FC = () => {
             </span>
           </div>
         </div>
-        <div className='flex flex-1 flex-col  justify-center bg-[#431407] pb-10 pt-5 text-xl lg:hidden '>
+        <div className='flex flex-1 flex-col  justify-center bg-[#431407] pb-10 pt-5 text-xl md:hidden '>
           <div className='px-10'>
             <div className='flex min-h-[100px] justify-center'>
               <Lottie
@@ -230,7 +230,7 @@ const Stories: React.FC = () => {
 
       {/* Story 3 */}
       <div className='flex flex-col md:flex-row'>
-        <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl lg:flex'>
+        <div className='hidden flex-1 flex-col  justify-center bg-white/80 text-2xl md:flex'>
           <div className='px-20 py-4'>
             <div className='flex min-h-[120px] justify-center'>
               <Lottie
@@ -261,12 +261,12 @@ const Stories: React.FC = () => {
           </div>
         </div>
         <div
-          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[800px]'
+          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[600px] lg:min-h-[800px]'
           ref={secRef3}
         >
           <motion.div
             style={{ scale: scale3 }}
-            className='relative min-h-[400px] md:min-h-[800px]'
+            className='relative min-h-[400px] md:min-h-[600px] lg:min-h-[800px]'
           >
             <Image
               alt='lost-in-forest'
@@ -278,7 +278,7 @@ const Stories: React.FC = () => {
             />
           </motion.div>
         </div>
-        <div className='flex flex-1 flex-col  justify-center bg-white/80 pb-10 pt-5 text-xl lg:hidden'>
+        <div className='flex flex-1 flex-col  justify-center bg-white/80 pb-10 pt-5 text-xl md:hidden'>
           <div className='px-10'>
             <div className='flex min-h-[120px] justify-center'>
               <Lottie
@@ -312,7 +312,7 @@ const Stories: React.FC = () => {
 
       {/* Story 4 */}
       {/* <div className='flex flex-col md:flex-row'>
-        <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
+        <div className='relative min-h-[400px] flex-1 md:min-h-[600px] lg:min-h-[800px]'>
           <Image
             alt='start-talking'
             style={{ objectFit: 'cover' }}

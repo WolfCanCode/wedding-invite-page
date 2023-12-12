@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
       </div>
       <div className='pt-12'>
         <div className='hidden md:block'>
-          <div className='relative   h-[600px] max-w-[100vw] overflow-hidden rounded-xl'>
+          <div className='relative   h-[600px] max-w-[100vw] overflow-hidden'>
             <Image
               placeholder='blur'
               src={banner}

@@ -86,10 +86,10 @@ const Header: React.FC = () => {
               <a href='#schedule'>Lịch trình</a>
             </li>
             <li className={underlineEffect}>
-              <a href='#confirmation'>Xác nhận tham dự</a>
+              <a href='#confirmation'>Tham dự</a>
             </li>
             <li className={underlineEffect}>
-              <a href='#gallery'>Gửi lời chúc</a>
+              <a href='#gallery'>Lời chúc</a>
             </li>
           </ul>
         </nav>
@@ -109,11 +109,11 @@ const Header: React.FC = () => {
             loop={false}
           />
         </div>
-        <div className='text-xl md:text-2xl'>Dung & Ngoc’s Wedding</div>
+        <div className='text-xl lg:text-2xl'>Dung & Ngoc’s Wedding</div>
       </div>
       {isWide ? (
         <nav className='flex flex-[2] justify-end pt-10'>
-          <ul className='text-md flex flex-row gap-4 whitespace-nowrap'>
+          <ul className='text-md flex flex-row gap-2 whitespace-nowrap'>
             <li className={underlineEffect}>
               <a href='#' onClick={openMoneyBox}>
                 Mừng cưới
@@ -219,7 +219,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       )}
-      <header className={[font.className, 'w-full p-8 md:p-24'].join(' ')}>
+      <header className={[font.className, 'w-full p-8 md:p-12'].join(' ')}>
         {HeaderRender}
       </header>
 
@@ -285,56 +285,63 @@ const Header: React.FC = () => {
               <span className='text-lg font-bold text-blue-500'>Chú rể</span>
             </div>
           </div>
-          <Card style={{ background: '#C80000' }}>
-            <Inset clip='padding-box' side='top' pb='current'>
-              <Box className='absolute left-0 top-0 min-h-[110px] w-full min-w-full rounded-b-full bg-red-900' />
-              <Flex gap='3' align='center' className='z-[100] py-4 pl-20'>
-                <Box className='relative h-[20vw] max-h-[75px]  w-[20vw] max-w-[75px] overflow-hidden rounded-full'>
-                  <Image
-                    placeholder='blur'
-                    src={isFemale ? bride : groom}
-                    fill
-                    sizes='100%'
-                    style={{ objectFit: 'cover', objectPosition: '0% 40%' }}
-                    alt={isFemale ? 'bride' : 'groom'}
-                  />
+          <div className='drop-shadow-lg'>
+            <Card style={{ background: '#C80000' }}>
+              <Inset
+                clip='padding-box'
+                side='top'
+                pb='current'
+                className='drop-shadow-xl'
+              >
+                <Box className='absolute left-0 top-0 min-h-[110px] w-full min-w-full rounded-b-full bg-red-900' />
+                <Flex gap='3' align='center' className='z-[100] py-4 pl-20'>
+                  <Box className='relative h-[20vw] max-h-[75px]  w-[20vw] max-w-[75px] overflow-hidden rounded-full'>
+                    <Image
+                      placeholder='blur'
+                      src={isFemale ? bride : groom}
+                      fill
+                      sizes='100%'
+                      style={{ objectFit: 'cover', objectPosition: '0% 40%' }}
+                      alt={isFemale ? 'bride' : 'groom'}
+                    />
+                  </Box>
+                  <Box className='z-[100]'>
+                    <div className='whitespace-nowrap font-bold text-white'>
+                      {isFemale ? 'Vũ Khánh Ngọc' : 'Hoàng Vũ Dũng'}
+                    </div>
+                    <div className='text-sm text-white'>
+                      {isFemale ? 'Cô dâu' : 'Chú rể'}
+                    </div>
+                  </Box>
+                </Flex>
+              </Inset>
+              <Flex
+                direction={'column'}
+                align='center'
+                className='z-[100] font-bold'
+              >
+                <Box className='text-white'>
+                  {isFemale ? 'Vũ Khánh Ngọc' : 'Hoàng Vũ Dũng'}
                 </Box>
-                <Box className='z-[100]'>
-                  <div className='whitespace-nowrap font-bold text-white'>
-                    {isFemale ? 'Vũ Khánh Ngọc' : 'Hoàng Vũ Dũng'}
-                  </div>
-                  <div className='text-sm text-white'>
-                    {isFemale ? 'Cô dâu' : 'Chú rể'}
-                  </div>
+                <Box className='text-white'>
+                  STK: {isFemale ? '0976492199' : '2452821'}
+                </Box>
+                <Box className='text-white'>
+                  Ngân hàng: {isFemale ? 'TP Bank' : 'ACB'}
                 </Box>
               </Flex>
-            </Inset>
-            <Flex
-              direction={'column'}
-              align='center'
-              className='z-[100] font-bold'
-            >
-              <Box className='text-white'>
-                {isFemale ? 'Vũ Khánh Ngọc' : 'Hoàng Vũ Dũng'}
+              <Box className='relative mx-auto my-4 h-[200px] w-[200px]'>
+                <Image
+                  placeholder='blur'
+                  src={isFemale ? qrFemale : qrMale}
+                  fill
+                  sizes='100%'
+                  style={{ objectFit: 'contain' }}
+                  alt='groom'
+                />
               </Box>
-              <Box className='text-white'>
-                STK: {isFemale ? '0976492199' : '2452821'}
-              </Box>
-              <Box className='text-white'>
-                Ngân hàng: {isFemale ? 'TP Bank' : 'ACB'}
-              </Box>
-            </Flex>
-            <Box className='relative mx-auto my-4 h-[200px] w-[200px]'>
-              <Image
-                placeholder='blur'
-                src={isFemale ? qrFemale : qrMale}
-                fill
-                sizes='100%'
-                style={{ objectFit: 'contain' }}
-                alt='groom'
-              />
-            </Box>
-          </Card>
+            </Card>
+          </div>
         </Dialog.Content>
       </Dialog.Root>
     </>
