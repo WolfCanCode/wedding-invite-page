@@ -166,7 +166,7 @@ const Blessing: React.FC = () => {
       <div className='md:max-h-auto scroll-parent gap-4overflow-y-auto flex max-h-[300px] min-h-[100px] w-full flex-row flex-wrap px-10 py-10 shadow-inner md:flex-nowrap md:overflow-x-auto md:overflow-y-hidden'>
         {isWide ? (
           <div className='scroll-element primary flex flex-row flex-wrap gap-4 py-10  md:flex-nowrap '>
-            {listBlessing.map((blessing) => (
+            {listBlessing.reverse().map((blessing) => (
               <div
                 key={blessing.id}
                 className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
@@ -182,7 +182,7 @@ const Blessing: React.FC = () => {
           </div>
         ) : (
           <div className='scroll-element-mobile primaryMobile flex flex-row flex-wrap justify-center gap-4 py-10  md:flex-nowrap '>
-            {listBlessing.map((blessing) => (
+            {listBlessing.reverse().map((blessing) => (
               <div
                 key={blessing.id}
                 className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
@@ -199,7 +199,7 @@ const Blessing: React.FC = () => {
         )}
         {isWide ? (
           <div className='scroll-element primary  flex flex-row flex-wrap gap-4 py-10  md:flex-nowrap '>
-            {listBlessing.map((blessing) => (
+            {listBlessing.reverse().map((blessing) => (
               <div
                 key={blessing.id}
                 className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
