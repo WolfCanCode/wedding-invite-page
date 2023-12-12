@@ -77,7 +77,7 @@ function List() {
                 {user.isFemale ? 'Nhà gái' : ''}
               </td>
               <td className='px-4'>
-                {user.confirmChoice === 1
+                {(user.confirmChoice === 1 || user.confirmChoice === 0)
                   ? 'Có'
                   : user.confirmChoice === 2
                     ? 'Không'
