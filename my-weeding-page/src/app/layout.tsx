@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
-import { useMount } from 'react-use';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: 'Hoang Dung & Khanh Ngoc Wedding',
@@ -16,6 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <SpeedInsights />
       <Theme>
         <body>{children}</body>
       </Theme>
