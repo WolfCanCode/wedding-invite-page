@@ -3,6 +3,14 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
+function generateRandomNumber(digits) {
+  var randomNumber = "";
+  for (var i = 0; i < digits; i++) {
+    randomNumber += Math.floor(Math.random() * 10).toString();
+  }
+  return randomNumber;
+}
+
 export async function POST(request: Request) {
   const { name, phone, isFemale, isMale, numberOfGuests, confirmChoice } =
     await request.json();
@@ -33,7 +41,7 @@ export async function POST(request: Request) {
   const newUser = await prisma.user.create({
     data: {
       name,
-      phone,
+      phone: generateRandomNumber(12),
       isFemale,
       isMale,
       numberOfGuests,
