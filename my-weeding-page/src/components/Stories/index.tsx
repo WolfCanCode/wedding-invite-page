@@ -1,7 +1,7 @@
 'use client';
 
 import Lottie from 'lottie-react';
-import { Habibi } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import Image from 'next/image';
 import React from 'react';
 import { TypeAnimation } from 'react-type-animation';
@@ -23,7 +23,7 @@ import animation2Data from './story-2.json';
 import animation3Data from './story-3.json';
 import animation4Data from './story-4.json';
 import { useUpdateEffect } from 'react-use';
-const font = Habibi({ weight: '400', subsets: ['latin'] });
+const font = Montserrat({ weight: '400', subsets: ['vietnamese'] });
 
 const Stories: React.FC = () => {
   const [inView1, setInView1] = React.useState(false);
