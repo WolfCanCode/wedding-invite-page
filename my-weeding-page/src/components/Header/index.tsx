@@ -27,7 +27,6 @@ const font = Playfair_Display({ weight: '400', subsets: ['vietnamese'] });
 const Header: React.FC = () => {
   const [isOpen, toggleMenu] = useToggle(false);
   const [isLoading, setIsLoading] = useBoolean(true);
-  const [isWide, setIsWide] = useBoolean(false);
   const [dialogOpen, setDialogOpen] = useBoolean(false);
   const [isMale, setIsMale] = useBoolean(false);
   const [isFemale, setIsFemale] = useBoolean(true);
@@ -69,11 +68,7 @@ const Header: React.FC = () => {
     toggleMenu();
   };
 
-  const isWideHook = useMedia('(min-width: 768px)');
-
-  useUpdateEffect(() => {
-    setIsWide(isWideHook);
-  }, [isWideHook]);
+  const isWide = useMedia('(min-width: 768px)');
 
   const openMoneyBox = () => {
     toggleMenu(false);

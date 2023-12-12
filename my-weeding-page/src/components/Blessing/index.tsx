@@ -13,7 +13,6 @@ const Blessing: React.FC = () => {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isWide, setIsWide] = useState(false);
   const [listBlessing, setListBlessing] = useState<
     {
       id?: string;
@@ -64,11 +63,7 @@ const Blessing: React.FC = () => {
       });
   };
 
-  const isWideHook = useMedia('(min-width: 768px)');
-
-  useUpdateEffect(() => {
-    setIsWide(isWideHook);
-  }, [isWideHook]);
+  const isWide = useMedia('(min-width: 768px)');
 
   // transform full name into censor name text
   const censorName = (name: string) => {
