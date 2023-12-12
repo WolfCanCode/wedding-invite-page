@@ -13,3 +13,99 @@ html {
 body, html{
   overflow-x: hidden;
 }
+
+.scroll-parent {
+  position: relative;
+  width: 100vw;
+  height: 20rem;
+  overflow-x: hidden;
+}
+
+.scroll-element {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  animation: primary 30s linear infinite;
+}
+
+
+.scroll-element-mobile {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  animation: primaryMobile 30s linear infinite;
+}
+
+
+.primary {
+  animation: primary 30s linear infinite !important;
+}
+
+.secondary {
+  animation: secondary 30s linear infinite !important; 
+}
+
+.primaryMobile {
+  animation: primaryMobile 30s linear infinite;
+}
+
+.secondaryMobile {
+  animation: secondaryMobile 30s linear infinite;
+}
+
+
+@keyframes primary {
+  from {
+    left: 0%;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes secondary {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0%;
+  }
+}
+
+@keyframes primaryMobile {
+  from {
+    top: 0%;
+  }
+  to {
+    top: -100%;
+  }
+}
+
+@keyframes secondaryMobile {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0%;
+  }
+}
+
+.heart {
+  position: fixed;
+  top: -1vh;
+  width: 25px;
+  height: auto;
+  /* font-size: 40px; */
+  transform: translateY(0);
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(101vh);
+  }
+}

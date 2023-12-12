@@ -1,8 +1,9 @@
 'use client';
 
+import { Box, Card, Dialog, Flex, Inset } from '@radix-ui/themes';
 import Lottie, { LottieRef } from 'lottie-react';
 import { Playfair_Display } from 'next/font/google';
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   useBoolean,
   useMedia,
@@ -13,14 +14,43 @@ import {
 import animation1Data from './header-1.json';
 import menuData from './menu.json';
 
+import Image from 'next/image';
+import bride from './bride.jpeg';
+import animation3Data from './female.json';
+import groom from './groom.jpeg';
+import animation2Data from './male.json';
+import qrFemale from './qr-female.png';
+import qrMale from './qr-male.png';
+import heart from './heart.png';
+
 const font = Playfair_Display({ weight: '400', subsets: ['vietnamese'] });
 const Header: React.FC = () => {
   const [isOpen, toggleMenu] = useToggle(false);
   const [isLoading, setIsLoading] = useBoolean(true);
+  const [isWide, setIsWide] = useBoolean(false);
+  const [dialogOpen, setDialogOpen] = useBoolean(false);
+  const [isMale, setIsMale] = useBoolean(false);
+  const [isFemale, setIsFemale] = useBoolean(true);
 
   const lotieRef: LottieRef = React.useRef(null);
   const lotieMenuRef: LottieRef = React.useRef(null);
 
+  useMount(() => {
+    setInterval(createHeart, 800);
+  });
+
+  function createHeart() {
+    const heart = document.createElement('img');
+    heart.src = '/heart.png';
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = Math.random() * 5 + 3 + 's ';
+    // heart.innerText = "🦄";
+    document.body.appendChild(heart);
+    setTimeout(() => {
+      heart.remove();
+    }, 7000);
+  }
   useMount(() => {
     setIsLoading(true);
     lotieRef.current?.setSpeed(2);
@@ -39,7 +69,16 @@ const Header: React.FC = () => {
     toggleMenu();
   };
 
-  const isWide = useMedia('(min-width: 768px)');
+  const isWideHook = useMedia('(min-width: 768px)');
+
+  useUpdateEffect(() => {
+    setIsWide(isWideHook);
+  }, [isWideHook]);
+
+  const openMoneyBox = () => {
+    toggleMenu(false);
+    setDialogOpen(true);
+  };
 
   const underlineEffect =
     'hover:underline underline-offset-4 decoration-4 decoration-orange-700/25';
@@ -47,12 +86,15 @@ const Header: React.FC = () => {
     <div className='relative flex flex-row justify-center md:justify-between'>
       {isWide ? (
         <nav className='pt-10'>
-          <ul className='flex flex-row gap-8 text-xl'>
+          <ul className='text-md flex flex-row gap-8 whitespace-nowrap'>
             <li className={underlineEffect}>
               <a href='#schedule'>Lịch trình</a>
             </li>
             <li className={underlineEffect}>
-              <a href='#confirmation'>Tham dự</a>
+              <a href='#confirmation'>Xác nhận tham dự</a>
+            </li>
+            <li className={underlineEffect}>
+              <a href='#gallery'>Gửi lời chúc</a>
             </li>
           </ul>
         </nav>
@@ -76,7 +118,12 @@ const Header: React.FC = () => {
       </div>
       {isWide ? (
         <nav className='pt-10'>
-          <ul className='flex flex-row gap-4 text-xl'>
+          <ul className='text-md flex flex-row gap-4 whitespace-nowrap'>
+            <li className={underlineEffect}>
+              <a href='#' onClick={openMoneyBox}>
+                Mừng cưới
+              </a>
+            </li>
             <li className={underlineEffect}>
               <a href='#gallery'>Ảnh cưới</a>
             </li>
@@ -88,14 +135,15 @@ const Header: React.FC = () => {
       ) : null}
       {!isWide ? (
         <button
-          className='absolute right-[-35px] top-[30%] z-[22]'
+          className='absolute right-[-35px] top-[30%] z-[4]'
           onClick={onToggleMenu}
         >
           <Lottie
             lottieRef={lotieMenuRef}
             animationData={menuData}
-            className='flex max-h-[50px] max-w-[100px] items-center justify-center'
+            className='z-[4] flex max-h-[50px] max-w-[100px] items-center justify-center'
             loop={false}
+            style={{ opacity: dialogOpen ? 0 : 1 }}
             autoPlay={false}
           />
         </button>
@@ -107,7 +155,7 @@ const Header: React.FC = () => {
     <>
       {isLoading && (
         <div className={font.className}>
-          <div className='fixed z-[21] flex h-screen w-screen flex-col justify-center bg-white/70 text-center backdrop-blur'>
+          <div className='fixed z-[5] flex h-screen w-screen flex-col justify-center bg-white/70 text-center backdrop-blur'>
             <div className='text-3xl md:text-2xl'>
               --Dung & Ngoc’s Wedding--
             </div>
@@ -116,8 +164,8 @@ const Header: React.FC = () => {
         </div>
       )}
       {isOpen && (
-        <div className='fixed z-[21] h-screen w-screen bg-orange-400/20 backdrop-blur'>
-          <div className='flex flex-col justify-center gap-4 px-32 py-24 text-3xl font-bold'>
+        <div className='fixed z-[3] h-screen w-screen bg-orange-400/20 backdrop-blur'>
+          <div className='flex flex-col justify-center gap-4 py-24 pl-12 text-3xl font-bold'>
             <div className={underlineEffect}>
               <a
                 href='#schedule'
@@ -135,7 +183,12 @@ const Header: React.FC = () => {
                   toggleMenu(false);
                 }}
               >
-                Tham dự
+                Xác nhận tham dự
+              </a>
+            </div>
+            <div className={underlineEffect}>
+              <a href='#' onClick={openMoneyBox}>
+                Mừng cưới
               </a>
             </div>
             <div className={underlineEffect}>
@@ -146,6 +199,16 @@ const Header: React.FC = () => {
                 }}
               >
                 Ảnh cưới
+              </a>
+            </div>
+            <div className={underlineEffect}>
+              <a
+                href='#blessing'
+                onClick={() => {
+                  toggleMenu(false);
+                }}
+              >
+                Gửi lời chúc
               </a>
             </div>
             <div className={underlineEffect}>
@@ -164,6 +227,121 @@ const Header: React.FC = () => {
       <header className={[font.className, 'w-full p-8 md:p-24'].join(' ')}>
         {HeaderRender}
       </header>
+
+      <Dialog.Root
+        open={dialogOpen}
+        onOpenChange={(open) => {
+          setDialogOpen(open);
+        }}
+      >
+        <Dialog.Content style={{ maxWidth: 450 }}>
+          <Dialog.Title>
+            <div className='flex flex-row justify-between'>
+              <div>🧧 Mừng cưới</div>
+              {/* Close button */}
+              <button
+                onClick={() => {
+                  setDialogOpen(false);
+                }}
+              >
+                Đóng
+              </button>
+            </div>
+          </Dialog.Title>
+          <Dialog.Description size='2' mb='4'>
+            Trong trường hợp bạn không thể đến tham dự đám cưới của tụi mình.
+          </Dialog.Description>
+          <div className='flex flex-row justify-center gap-4 pb-5'>
+            <div
+              onClick={() => {
+                if (isLoading) return;
+                setIsMale(false);
+                setIsFemale(true);
+              }}
+              className={[
+                'flex h-[100px] w-[100px] cursor-pointer flex-col justify-center rounded-full text-center',
+                isFemale ? 'bg-pink-200' : '',
+              ].join(' ')}
+            >
+              <Lottie
+                animationData={animation3Data}
+                className='flex max-h-[100px] max-w-[100px] items-center justify-center'
+                loop={true}
+              />
+              <span className='text-lg font-bold text-pink-500'>Cô dâu</span>
+            </div>
+
+            <div
+              onClick={() => {
+                if (isLoading) return;
+                setIsMale(true);
+                setIsFemale(false);
+              }}
+              className={[
+                'flex h-[100px] w-[100px] cursor-pointer flex-col justify-center rounded-full text-center',
+                isMale ? 'bg-blue-200' : '',
+              ].join(' ')}
+            >
+              <Lottie
+                animationData={animation2Data}
+                className='flex max-h-[100px] max-w-[100px] items-center justify-center '
+                loop={true}
+              />
+              <span className='text-lg font-bold text-blue-500'>Chú rể</span>
+            </div>
+          </div>
+          <Card style={{ background: '#C80000' }}>
+            <Inset clip='padding-box' side='top' pb='current'>
+              <Box className='absolute left-0 top-0 min-h-[110px] w-full min-w-full rounded-b-full bg-red-900' />
+              <Flex gap='3' align='center' className='z-[100] py-4 pl-20'>
+                <Box className='relative h-[20vw] max-h-[75px]  w-[20vw] max-w-[75px] overflow-hidden rounded-full'>
+                  <Image
+                    placeholder='blur'
+                    src={isFemale ? bride : groom}
+                    fill
+                    sizes='100%'
+                    style={{ objectFit: 'cover', objectPosition: '0% 40%' }}
+                    alt={isFemale ? 'bride' : 'groom'}
+                  />
+                </Box>
+                <Box className='z-[100]'>
+                  <div className='whitespace-nowrap font-bold text-white'>
+                    {isFemale ? 'Vũ Khánh Ngọc' : 'Hoàng Vũ Dũng'}
+                  </div>
+                  <div className='text-sm text-white'>
+                    {isFemale ? 'Cô dâu' : 'Chú rể'}
+                  </div>
+                </Box>
+              </Flex>
+            </Inset>
+            <Flex
+              direction={'column'}
+              align='center'
+              className='z-[100] font-bold'
+            >
+              <Box className='text-white'>
+                {isFemale ? 'Vũ Khánh Ngọc' : 'Hoàng Vũ Dũng'}
+              </Box>
+              <Box className='text-white'>
+                STK: {isFemale ? '0976492199' : '2452821'}
+              </Box>
+              <Box className='text-white'>
+                Ngân hàng: {isFemale ? 'TP Bank' : 'ACB'}
+              </Box>
+            </Flex>
+            <Box className='relative mx-auto my-4 h-[200px] w-[200px]'>
+              <Image
+                placeholder='blur'
+                src={isFemale ? qrFemale : qrMale}
+                fill
+                sizes='100%'
+                style={{ objectFit: 'contain' }}
+                alt='groom'
+              />
+            </Box>
+          </Card>
+        </Dialog.Content>
+      </Dialog.Root>
     </>
   );
 };

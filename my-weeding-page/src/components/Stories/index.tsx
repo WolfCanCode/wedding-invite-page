@@ -4,6 +4,14 @@ import Lottie from 'lottie-react';
 import { Habibi } from 'next/font/google';
 import Image from 'next/image';
 import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
+import {
+  useMotionValueEvent,
+  useScroll,
+  motion,
+  useTransform,
+  useInView,
+} from 'framer-motion';
 
 import story1Image from './story-1.jpg';
 import story2Image from './story-2.jpg';
@@ -14,9 +22,58 @@ import animation1Data from './story-1.json';
 import animation2Data from './story-2.json';
 import animation3Data from './story-3.json';
 import animation4Data from './story-4.json';
+import { useUpdateEffect } from 'react-use';
 const font = Habibi({ weight: '400', subsets: ['latin'] });
 
 const Stories: React.FC = () => {
+  const [inView1, setInView1] = React.useState(false);
+  const [inView2, setInView2] = React.useState(false);
+  const [inView3, setInView3] = React.useState(false);
+  //story
+  const secRef1 = React.useRef<HTMLDivElement>(null);
+  const isInView1 = useInView(secRef1);
+  const { scrollYProgress: yProgress1 } = useScroll({
+    target: secRef1,
+    offset: ['start end', 'end start'],
+  });
+  const scale1 = useTransform(yProgress1, [0, 0.5, 1], [1.5, 1.25, 1]);
+
+  useUpdateEffect(() => {
+    if (isInView1) {
+      setInView1(isInView1);
+    }
+  }, [isInView1]);
+
+  //story
+  const secRef2 = React.useRef<HTMLDivElement>(null);
+  const isInView2 = useInView(secRef2);
+  const { scrollYProgress: yProgress2 } = useScroll({
+    target: secRef2,
+    offset: ['start end', 'end start'],
+  });
+  const scale2 = useTransform(yProgress2, [0, 0.5, 1], [1.5, 1.25, 1]);
+
+  useUpdateEffect(() => {
+    if (isInView2) {
+      setInView2(isInView2);
+    }
+  }, [isInView2]);
+
+  //story
+  const secRef3 = React.useRef<HTMLDivElement>(null);
+  const isInView3 = useInView(secRef3);
+  const { scrollYProgress: yProgress3 } = useScroll({
+    target: secRef3,
+    offset: ['start end', 'end start'],
+  });
+  const scale3 = useTransform(yProgress3, [0, 0.5, 1], [1.5, 1.25, 1]);
+
+  useUpdateEffect(() => {
+    if (isInView3) {
+      setInView3(isInView3);
+    }
+  }, [isInView3]);
+
   return (
     <section className='flex w-screen flex-col pt-10 text-center'>
       {/* Story 1 */}
@@ -31,23 +88,39 @@ const Stories: React.FC = () => {
               />
             </div>
             <span className={font.className}>
-              Amidst the urban clamor, our eyes met, and love ignited in a
-              single glance. His captivating gaze, the mischievous curve of his
-              smile, his aura of charm - all conspired to capture my heart. In
-              that moment, time stood still, and I knew I had found my soulmate
-              ♥.
+              {inView1 ? (
+                <TypeAnimation
+                  sequence={[
+                    `Tình yêu không phải là việc thay đổi một người, mà là việc hỗ trợ
+                    và khuyến khích họ để trở thành phiên bản tốt nhất của chính mình.`,
+                    1000,
+                  ]}
+                  speed={50}
+                  style={{ whiteSpace: 'pre-line' }}
+                  className='text-md'
+                  repeat={0}
+                />
+              ) : null}
             </span>
           </div>
         </div>
-        <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
-          <Image
-            alt='first-met'
-            style={{ objectFit: 'cover' }}
-            fill
-            sizes='100%'
-            placeholder='blur'
-            src={story1Image}
-          />
+        <div
+          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[800px]'
+          ref={secRef1}
+        >
+          <motion.div
+            className='relative min-h-[400px] md:min-h-[800px]'
+            style={{ scale: scale1 }}
+          >
+            <Image
+              alt='first-met'
+              style={{ objectFit: 'cover' }}
+              fill
+              sizes='100%'
+              placeholder='blur'
+              src={story1Image}
+            />
+          </motion.div>
         </div>
         <div className='flex flex-1 flex-col  justify-center bg-white/80 pt-5 text-xl lg:hidden'>
           <div className='px-10 pb-10'>
@@ -58,28 +131,44 @@ const Stories: React.FC = () => {
                 loop={true}
               />
             </div>
-            <span className={font.className}>
-              Amidst the urban clamor, our eyes met, and love ignited in a
-              single glance. His captivating gaze, the mischievous curve of his
-              smile, his aura of charm - all conspired to capture my heart. In
-              that moment, time stood still, and I knew I had found my soulmate
-              ♥.
-            </span>
+            <div className={[font.className, 'min-h-[200px]'].join(' ')}>
+              {inView1 && (
+                <TypeAnimation
+                  sequence={[
+                    `Tình yêu không phải là việc thay đổi một người, mà là việc hỗ trợ
+                    và khuyến khích họ để trở thành phiên bản tốt nhất của chính mình.`,
+                    1000,
+                  ]}
+                  speed={50}
+                  style={{ whiteSpace: 'pre-line' }}
+                  className='text-md'
+                  repeat={0}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Story 2 */}
       <div className='flex flex-col md:flex-row'>
-        <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
-          <Image
-            alt='start-talking'
-            style={{ objectFit: 'cover', objectPosition: '50% 100%' }}
-            sizes='100%'
-            placeholder='blur'
-            fill
-            src={story2Image}
-          />
+        <div
+          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[800px]'
+          ref={secRef2}
+        >
+          <motion.div
+            className='relative min-h-[400px] md:min-h-[800px]'
+            style={{ scale: scale2 }}
+          >
+            <Image
+              alt='start-talking'
+              style={{ objectFit: 'cover', objectPosition: '50% 100%' }}
+              sizes='100%'
+              placeholder='blur'
+              fill
+              src={story2Image}
+            />
+          </motion.div>
         </div>
         <div className='hidden flex-1 flex-col  justify-center bg-[#431407] text-2xl lg:flex '>
           <div className='px-20  py-4'>
@@ -91,18 +180,20 @@ const Stories: React.FC = () => {
               />
             </div>
             <span className={[font.className, 'text-white'].join(' ')}>
-              Drawn to his magnetic presence, I approached him, my heart
-              pounding with anticipation. Our conversation flowed effortlessly,
-              revealing a shared passion for life, a deep connection that
-              transcended the mundane. As we delved into our thoughts and
-              dreams, I discovered a kindred spirit, someone who mirrored my
-              thoughts and echoed my heart.
-              <br />
-              Under his unwavering support, I shed my insecurities and embraced
-              my authentic self. He ignited a fire within me, empowering me to
-              chase my dreams and believe in my own potential. With each passing
-              moment, my admiration for him blossomed into a love so profound,
-              so pure, that it filled my soul with an indescribable joy 🧸.
+              {inView2 && (
+                <TypeAnimation
+                  sequence={[
+                    `Hôn nhân là một cuộc phiêu lưu đầy thách thức và niềm vui. Chúng
+              mình đã sẵn sàng tận hưởng việc xây dựng tổ ấm của mình và chia sẻ
+              những kỷ niệm đáng nhớ cùng nhau.`,
+                    1000,
+                  ]}
+                  speed={50}
+                  style={{ whiteSpace: 'pre-line' }}
+                  className='text-md text-white'
+                  repeat={0}
+                />
+              )}
             </span>
           </div>
         </div>
@@ -115,20 +206,24 @@ const Stories: React.FC = () => {
                 loop={true}
               />
             </div>
-            <span className={[font.className, 'text-white'].join(' ')}>
-              Drawn to his magnetic presence, I approached him, my heart
-              pounding with anticipation. Our conversation flowed effortlessly,
-              revealing a shared passion for life, a deep connection that
-              transcended the mundane. As we delved into our thoughts and
-              dreams, I discovered a kindred spirit, someone who mirrored my
-              thoughts and echoed my heart.
-              <br />
-              Under his unwavering support, I shed my insecurities and embraced
-              my authentic self. He ignited a fire within me, empowering me to
-              chase my dreams and believe in my own potential. With each passing
-              moment, my admiration for him blossomed into a love so profound,
-              so pure, that it filled my soul with an indescribable joy 🧸.{' '}
-            </span>
+            <div
+              className={[font.className, 'min-h-[200px] text-white'].join(' ')}
+            >
+              {inView2 && (
+                <TypeAnimation
+                  sequence={[
+                    `Hôn nhân là một cuộc phiêu lưu đầy thách thức và niềm vui. Chúng
+              mình đã sẵn sàng tận hưởng việc xây dựng tổ ấm của mình và chia sẻ
+              những kỷ niệm đáng nhớ cùng nhau.`,
+                    1000,
+                  ]}
+                  speed={50}
+                  style={{ whiteSpace: 'pre-line' }}
+                  className='text-md text-white'
+                  repeat={0}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -145,35 +240,43 @@ const Stories: React.FC = () => {
               />
             </div>
             <span className={font.className}>
-              Our love blossomed amidst the beauty of nature, our shared passion
-              for hiking leading us on countless adventures. One fateful day, we
-              ventured into an unexplored forest trail, captivated by its
-              mystery. As the sun began to set, we found ourselves lost, the
-              familiar path replaced by a labyrinth of trees and shadows.
-              <br />
-              Panic threatened to consume us, but our love for each other
-              provided a beacon of hope. We calmed ourselves, drawing strength
-              from our shared resilience and determination. Guided by the sound
-              of flowing water, we retraced our steps, our spirits lifted by
-              laughter and shared stories.
-              <br />
-              Finally, a familiar trail marker emerged, leading us back to the
-              light of civilization. We emerged, our hearts filled with
-              gratitude, our bond strengthened by the experience. This shared
-              adventure taught us the power of love and resilience – together,
-              we could overcome any challenge.
+              {inView3 && (
+                <TypeAnimation
+                  sequence={[
+                    `Một ngày đặc biệt sắp đến và sự hiện diện của bạn là một món quà
+              vô giá giúp cho ngày trọng đại này trở nên thêm ý nghĩa và trọn
+              vẹn. Trân trọng mời bạn đến tham dự buổi tiệc mừng Lễ thành hôn
+              của hai chúng mình. Để có thể chuẩn bị và đón tiếp bạn chu đáo,
+              bạn hãy đăng kí thông tin tham dự tiệc cưới ở bên dưới nhé.
+              \nSee you soon!`,
+                    1000,
+                  ]}
+                  speed={50}
+                  style={{ whiteSpace: 'pre-line' }}
+                  className='text-md '
+                  repeat={0}
+                />
+              )}
             </span>
           </div>
         </div>
-        <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
-          <Image
-            alt='lost-in-forest'
-            style={{ objectFit: 'cover', objectPosition: '50% 70%' }}
-            sizes='100%'
-            placeholder='blur'
-            fill
-            src={story3Image}
-          />
+        <div
+          className='relative min-h-[400px] flex-1 overflow-hidden md:min-h-[800px]'
+          ref={secRef3}
+        >
+          <motion.div
+            style={{ scale: scale3 }}
+            className='relative min-h-[400px] md:min-h-[800px]'
+          >
+            <Image
+              alt='lost-in-forest'
+              style={{ objectFit: 'cover', objectPosition: '50% 70%' }}
+              sizes='100%'
+              placeholder='blur'
+              fill
+              src={story3Image}
+            />
+          </motion.div>
         </div>
         <div className='flex flex-1 flex-col  justify-center bg-white/80 pb-10 pt-5 text-xl lg:hidden'>
           <div className='px-10'>
@@ -184,31 +287,31 @@ const Stories: React.FC = () => {
                 loop={true}
               />
             </div>
-            <span className={font.className}>
-              Our love blossomed amidst the beauty of nature, our shared passion
-              for hiking leading us on countless adventures. One fateful day, we
-              ventured into an unexplored forest trail, captivated by its
-              mystery. As the sun began to set, we found ourselves lost, the
-              familiar path replaced by a labyrinth of trees and shadows.
-              <br />
-              Panic threatened to consume us, but our love for each other
-              provided a beacon of hope. We calmed ourselves, drawing strength
-              from our shared resilience and determination. Guided by the sound
-              of flowing water, we retraced our steps, our spirits lifted by
-              laughter and shared stories.
-              <br />
-              Finally, a familiar trail marker emerged, leading us back to the
-              light of civilization. We emerged, our hearts filled with
-              gratitude, our bond strengthened by the experience. This shared
-              adventure taught us the power of love and resilience – together,
-              we could overcome any challenge.
-            </span>
+            <div className={[font.className, 'min-h-[320px]'].join(' ')}>
+              {inView3 && (
+                <TypeAnimation
+                  sequence={[
+                    `Một ngày đặc biệt sắp đến và sự hiện diện của bạn là một món quà
+              vô giá giúp cho ngày trọng đại này trở nên thêm ý nghĩa và trọn
+              vẹn. Trân trọng mời bạn đến tham dự buổi tiệc mừng Lễ thành hôn
+              của hai chúng mình. Để có thể chuẩn bị và đón tiếp bạn chu đáo,
+              bạn hãy đăng kí thông tin tham dự tiệc cưới ở bên dưới nhé.
+              \nSee you soon!`,
+                    1000,
+                  ]}
+                  speed={50}
+                  style={{ whiteSpace: 'pre-line' }}
+                  className='text-md '
+                  repeat={0}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
 
       {/* Story 4 */}
-      <div className='flex flex-col md:flex-row'>
+      {/* <div className='flex flex-col md:flex-row'>
         <div className='relative min-h-[400px] flex-1 md:min-h-[800px]'>
           <Image
             alt='start-talking'
@@ -261,7 +364,7 @@ const Stories: React.FC = () => {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -6,13 +6,14 @@ import animationData from './blessing.json';
 import animation2Data from './blessing2.json';
 
 import Lottie from 'lottie-react';
-import { useMount } from 'react-use';
+import { useMedia, useMount, useUpdateEffect } from 'react-use';
 const font1 = Dancing_Script({ weight: '400', subsets: ['vietnamese'] });
 
 const Blessing: React.FC = () => {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isWide, setIsWide] = useState(false);
   const [listBlessing, setListBlessing] = useState<
     {
       id?: string;
@@ -63,9 +64,31 @@ const Blessing: React.FC = () => {
       });
   };
 
+  const isWideHook = useMedia('(min-width: 768px)');
+
+  useUpdateEffect(() => {
+    setIsWide(isWideHook);
+  }, [isWideHook]);
+
+  // transform full name into censor name text
+  const censorName = (name: string) => {
+    const nameArr = name.split(' ');
+    const censorName = nameArr.map((name) => {
+      const nameArr = name.split('');
+      const censorName = nameArr.map((letter, index) => {
+        if (index === 0) {
+          return letter;
+        }
+        return '*';
+      });
+      return censorName.join('');
+    });
+    return censorName.join(' ');
+  };
+
   return (
     <section
-      id='gallery'
+      id='blessing'
       className='relative flex flex-col justify-center bg-rose-200 pt-12 text-center'
     >
       <div className='justify-center'>
@@ -145,18 +168,73 @@ const Blessing: React.FC = () => {
           loop={true}
         />
       </div>
-      <div className='md:max-h-auto flex max-h-[300px] min-h-[100px] w-full flex-row flex-wrap gap-4 overflow-y-auto  px-10 py-10 shadow-inner md:flex-nowrap md:overflow-x-auto md:overflow-y-hidden'>
-        {listBlessing.map((blessing) => (
-          <div
-            key={blessing.id}
-            className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
-          >
-            <div className='text-left text-sm font-bold'>{blessing.name}</div>
-            <div className='max-w-[300px] whitespace-normal text-left'>
-              {blessing.content}
-            </div>
+      <div className='md:max-h-auto scroll-parent gap-4overflow-y-auto flex max-h-[300px] min-h-[100px] w-full flex-row flex-wrap px-10 py-10 shadow-inner md:flex-nowrap md:overflow-x-auto md:overflow-y-hidden'>
+        {isWide ? (
+          <div className='scroll-element primary flex flex-row flex-wrap gap-4 py-10  md:flex-nowrap '>
+            {listBlessing.map((blessing) => (
+              <div
+                key={blessing.id}
+                className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
+              >
+                <div className='text-left text-sm font-bold'>
+                  {censorName(blessing.name || '')}
+                </div>
+                <div className='max-w-[300px] whitespace-normal text-left'>
+                  {blessing.content}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <div className='scroll-element-mobile primaryMobile flex flex-row flex-wrap justify-center gap-4 py-10  md:flex-nowrap '>
+            {listBlessing.map((blessing) => (
+              <div
+                key={blessing.id}
+                className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
+              >
+                <div className='text-left text-sm font-bold'>
+                  {censorName(blessing.name || '')}
+                </div>
+                <div className='max-w-[300px] whitespace-normal text-left'>
+                  {blessing.content}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {isWide ? (
+          <div className='scroll-element primary  flex flex-row flex-wrap gap-4 py-10  md:flex-nowrap '>
+            {listBlessing.map((blessing) => (
+              <div
+                key={blessing.id}
+                className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
+              >
+                <div className='text-left text-sm font-bold'>
+                  {censorName(blessing.name || '')}
+                </div>
+                <div className='max-w-[300px] whitespace-normal text-left'>
+                  {blessing.content}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className='scroll-element-mobile secondaryMobile mt-12 flex flex-row flex-wrap justify-center gap-4 py-10  md:flex-nowrap '>
+            {listBlessing.map((blessing) => (
+              <div
+                key={blessing.id}
+                className='h-fit w-fit min-w-[300px] whitespace-nowrap rounded-3xl bg-white/25 p-4'
+              >
+                <div className='text-left text-sm font-bold'>
+                  {censorName(blessing.name || '')}
+                </div>
+                <div className='max-w-[300px] whitespace-normal text-left'>
+                  {blessing.content}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -62,8 +62,8 @@ function Confirmation() {
   return (
     <section id='confirmation'>
       {/* Add a header with a red background and white text */}
-      <header className='bg-[#7A4732] py-4 text-center text-2xl font-bold text-white'>
-        Xác nhận tham dự
+      <header className='bg-[#7A4732] py-4 text-center text-xl font-bold text-white md:text-2xl'>
+        Đến chung vui cùng chúng mình nhé!
       </header>
       {/* Add a main section with a form */}
       <main className='mx-auto max-w-lg p-8'>
@@ -158,7 +158,7 @@ function Confirmation() {
               htmlFor='attendance'
               className='block text-sm font-medium text-gray-700'
             >
-              Bạn sẽ tham gia lễ cưới?
+              Bạn sẽ đến chứ?
             </label>
             <select
               disabled={isLoading}
@@ -171,8 +171,8 @@ function Confirmation() {
               required
               className='mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
             >
-              <option value='1'>Có</option>
-              <option value='2'>Không</option>
+              <option value='1'>Tất nhiên rồi</option>
+              <option value='2'>Mình không thể tham dự</option>
               {/* <option value='0'>Chưa biết</option> */}
             </select>
           </div>

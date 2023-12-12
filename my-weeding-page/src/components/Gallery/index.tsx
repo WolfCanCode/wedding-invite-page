@@ -10,6 +10,8 @@ import animationData from './gallery.json';
 import 'yet-another-react-lightbox/styles.css';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import { useMedia, useMount } from 'react-use';
+import NextJsImage from './nextImage';
+import AlbumNextJsImage from './albumNextImage';
 
 const font1 = Hachi_Maru_Pop({ weight: '400', subsets: ['latin'] });
 
@@ -32,6 +34,7 @@ const Gallery: React.FC = () => {
       randomItems.push({ ...newGalleryData[randomIndex] });
       newGalleryData.splice(randomIndex, 1);
     }
+    console.log(randomItems);
     return randomItems;
   };
 
@@ -53,7 +56,7 @@ const Gallery: React.FC = () => {
           layout='masonry'
           photos={
             mobGallery?.map((image) => ({
-              src: image?.thumbnailUrl,
+              src: image.url,
               width: image?.width ?? 1000,
               height: image?.height ?? 1000,
             })) || []
@@ -63,6 +66,7 @@ const Gallery: React.FC = () => {
           columns={isWide ? 4 : 2}
           padding={0}
           onClick={({ index }) => setIndex(index)}
+          renderPhoto={AlbumNextJsImage}
         />
 
         <Lightbox
@@ -70,13 +74,14 @@ const Gallery: React.FC = () => {
           plugins={[Zoom]}
           slides={
             mobGallery?.map((image) => ({
-              src: image?.url,
-              width: screen.width,
-              height: screen.height,
-            })) ?? []
+              src: image.url,
+              width: image?.width ?? 1000,
+              height: image?.height ?? 1000,
+            })) || []
           }
           open={index >= 0}
           close={() => setIndex(-1)}
+          render={{ slide: NextJsImage }}
         />
       </div>
     </section>
