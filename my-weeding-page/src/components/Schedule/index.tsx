@@ -82,6 +82,7 @@ const Schedule: React.FC = () => {
                   trigger='click'
                   label='Lưu vào lịch'
                   language='vi'
+                  listStyle="dropup-static"
                 ></AddToCalendarButton>
               </div>
               <div className='flex flex-col justify-center'>
@@ -141,6 +142,7 @@ const Schedule: React.FC = () => {
                   trigger='click'
                   label='Lưu vào lịch'
                   language='vi'
+                  listStyle="dropup-static"
                 ></AddToCalendarButton>
               </div>
               <div className='flex flex-col justify-center'>
