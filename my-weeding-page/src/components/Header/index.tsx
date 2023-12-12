@@ -80,7 +80,7 @@ const Header: React.FC = () => {
   const HeaderRender = (
     <div className='relative flex flex-row justify-center md:justify-between'>
       {isWide ? (
-        <nav className='pt-10'>
+        <nav className='flex-[2] pt-10'>
           <ul className='text-md flex flex-row gap-8 whitespace-nowrap'>
             <li className={underlineEffect}>
               <a href='#schedule'>Lịch trình</a>
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
       <div
         className={[
           font.className,
-          'flex-2 flex flex-col justify-center text-center',
+          'flex flex-[1] flex-col justify-center text-center',
         ].join(' ')}
       >
         <div className='flex min-h-[50px] justify-center'>
@@ -112,7 +112,7 @@ const Header: React.FC = () => {
         <div className='text-xl md:text-2xl'>Dung & Ngoc’s Wedding</div>
       </div>
       {isWide ? (
-        <nav className='pt-10'>
+        <nav className='flex flex-[2] justify-end pt-10'>
           <ul className='text-md flex flex-row gap-4 whitespace-nowrap'>
             <li className={underlineEffect}>
               <a href='#' onClick={openMoneyBox}>

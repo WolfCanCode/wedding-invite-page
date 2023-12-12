@@ -8,12 +8,7 @@ export default function AlbumNextJsImage({
 }: RenderPhotoProps) {
   return (
     <div style={{ ...wrapperStyle, position: 'relative' }}>
-      <Image
-        fill
-        src={photo}
-        placeholder={'blur'}
-        {...{ alt, title, sizes, className, onClick }}
-      />
+      <Image fill src={photo} {...{ alt, title, sizes, className, onClick }} />
     </div>
   );
 }
